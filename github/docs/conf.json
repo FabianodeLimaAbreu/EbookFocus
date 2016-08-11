@@ -1,0 +1,15 @@
+"templates": {
+    "systemName"            : "WebFair",
+    "footer"                : "Documentação gerada por Fabiano de Lima Abreu referente a todo o desenvolvimento até 26-06-2015",
+    "copyright"             :  "Copyright Focus Têxtil - Todos os direitos reservados.",
+    "navType"               : "vertical ",//inline
+    "theme"                 : "cosmo",
+    "linenums"              : "false",
+    "collapseSymbols"       : "false",
+    "inverseNav"            : "false",
+    "outputSourceFiles"     : "false" ,
+    "outputSourcePath"      : "true",
+    "dateFormat"            : "YYYY-MM-DD",
+    "highlightTutorialCode" : "façse",
+    "syntaxTheme"           : "default"
+}

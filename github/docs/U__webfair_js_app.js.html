@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>DocStrap Source: U:/webfair/js/app.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">DocStrap</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="window.App.html">window.App</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#getloading">getloading</a>
+						</li>
+						
+						<li>
+							<a href="global.html#setloading">setloading</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: U:/webfair/js/app.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">require.config({
+  shim: {
+    spine: {
+      deps: ["jquery"],
+      exports: "Spine"
+    }
+  },
+  baseUrl: "js/lib",
+  paths: {
+    app: "../app",
+    models: "../models",
+    sp: "spine"
+  }
+});
+require(["methods","sp/min", "app/content", "app/detail"], function() {
+  /**
+  * Classe principal da aplicação.
+  * @constructor
+  * @param {string} title - The title of the book.
+  * @param {string} author - The author of the book.
+  */
+  window.App = Spine.Controller.sub({
+    el:$("body"),
+    elements: {
+      ".container":"container",
+      "#toggle-menu a":"menuopt",
+      "#wrap .mask":"maskEl",
+      ".search":"searchEl",
+      ".right-list button":"viewBtn",
+      "button.close":"closeBtn",
+      ".login-name":"username",
+      ".table-container":"viewList",
+      ".viewport":"viewImage",
+      ".content":"contentEl",
+      ".bread-box":"breadEl",
+      "#modal" : "modalEl",
+      ".detail":"detailEl"
+    },
+
+    events: {      
+      "click .right-list button":"changeview",
+      "submit .search":"submit",
+      "click button.icon.go_back_default":"goBack",
+      "click button.close":"getOut"
+    },
+    init:function(){
+      this.view = "images";
+      this.mode = "artigos-pai";
+      this.itens = $([]);
+      this.data=[];
+      this.fdata = [];
+      this.loja="";
+      this.area="";
+      this.father=!0;
+      this.searchname="";
+      this.breadarr = [];
+      this.content = new Content({el:this.contentEl});
+      this.modal = new Modal({el:this.modalEl});
+      this.detail = new Detail({el:this.detailEl, breadEl:this.breadEl,getloading:this.proxy(this.getloading), setloading:this.proxy(this.setloading),stage:this.proxy(this.stage), body:this.el,getfdata:this.proxy(this.getfdata)});
+
+      this.usr = jQuery.parseJSON($.cookie("portal"));
+        if(!this.usr)
+          window.location.href = 'login.html';
+      this.username.text(this.usr.Nome);
+      
+      this.el.find("#wrap").removeClass("hide");
+
+
+      // this.spotlight = new Spotlight({el:this.spotEl});
+      this.routes({
+        "":function() {
+          alert("vazio");
+          this.menuopt.eq(0).trigger("click");
+        },
+        "search/*loja/*area/*code":function(a){
+          this.setMenu(a.loja.toUpperCase());
+          this.mode = "artigos-pai/"+a.loja+"/"+a.area+"/"+a.code;
+          this.loja=a.loja.toUpperCase();
+          this.area = a.area;
+          this.code = a.code;
+          this.searchEl.find(".text").val(this.code).focus();
+          this.searchEl.trigger('submit');
+        },
+        "artigos-pai/*loja/*area/*code":function(a){
+          this.reset();
+          $(".detail").hide();
+          this.setMenu(a.loja.toUpperCase());
+          this.mode = "artigos-pai/"+a.loja+"/"+a.area+"/"+a.code;
+          this.loja = a.loja.toUpperCase();
+          this.area = a.area;
+          this.code = a.code;
+          this.father=!0;
+          $('body').removeClass().addClass('pai');
+          this.searchEl.find(".text").val(a.code).focus();
+          this.searchEl.trigger('submit');
+        },
+        "artigos-filho/*loja/*artigo/*code":function(a){
+          this.reset();
+          $(".detail").hide();
+
+          this.setMenu(a.loja);
+          this.code = a.code;
+          this.artigo = a.artigo;
+          this.loja=a.loja;
+          this.father=!1;
+          this.mode = "artigos-filho/"+a.loja+"/"+a.artigo+"/"+a.code;
+          this.searchEl.find(".text").val(a.code).focus();
+          $('body').removeClass().addClass('filho');
+          // $('body').removeClass('pai').addClass('filho');
+          this.searchEl.trigger('submit');
+        },
+        "detail/*loja/*tipo/*code" : function(a) {
+          /*Tela de detalhes para pai*/
+          this.detail.reload(!0,a.loja,a.tipo,a.code);
+        },
+        "detail/*tipo/*code" : function(a) {
+          // console.log(a);
+          // console.log("DETALHE FILHO")
+          this.detail.reload(!0,!1,a.tipo, a.code);
+        }
+      });
+    },
+    getOut : function(a){
+      a.preventDefault();
+      Logout();
+    },
+    goBack : function(){
+      if(this.father){
+        window.location.href = './#'+this.loja;
+      }else{
+        var bread = $('.bread-colec').find("a").text();
+        // var grupo = bread.split("- ")[1];
+        var grupo = this.fdata[0].GRUPO;
+        var area = this.fdata[0].TYPE_MAT;
+        this.navigate &amp;&amp; this.navigate("artigos-pai", this.loja,area,grupo,!0);        
+      }      
+      /*if(this.loja !==""){
+        window.location.href = './';
+      }*/      
+
+    },
+    setBreadcrumb : function(a, val){
+      var loja, area, grupo, artigo, bread_text;
+      
+      // Error
+      if(!a[0]){
+        return this.modal.open(),this.breadEl.find('.bread-colec a').text("").removeClass('active'),this.setloading(!1), this.searchEl.find('input').blur();
+      }
+
+      loja        = a[0].DESC_STORE;
+      grupo       = a[0].GRUPO;
+      area        = a[0].TYPE_MAT;
+      artigo      = this.artigo;
+      bread_text  = loja+' - '+area+' - '+val;
+
+
+
+      // FILHO
+      if(!loja){
+        this.area=a[0].TYPE_MAT;
+        this.breadEl.find('.bread-colec a').text(area+' - '+grupo+' - '+artigo).addClass('active');        
+        return false;
+      }
+      // PAI      
+      (this.area=="X") ? (bread_text=loja+' - '+val) : bread_text=(loja+' - '+area+' - '+val);
+      this.breadEl.find('.bread-colec a').text(bread_text).addClass('active')
+       
+      
+    },
+    changeview : function(a) {
+      if ("object" === typeof a) {
+          a.preventDefault(), a = $(a.target);
+      } else {
+          return !1;
+      }
+      if (this.loading){
+        return !1;
+      }            
+      a.hasClass("sel") || (this.viewBtn.removeClass("sel"), a.addClass("sel"), this.view = a.attr('alt'), this.setdata(this.fdata));
+    },
+    setMenu:function(loja){
+      if(this.menuopt.hasClass("sel")){
+        this.menuopt.removeClass("sel");
+      }
+      this.menuopt.each(function(a,b){
+        if(b.hash === "#"+loja){
+          $(b).addClass("sel");
+        }        
+      });
+    },
+    submit:function(e){
+      // alert('submit');
+      var _type, path;
+      e.preventDefault();
+      var val=$(e.target).find(".text").val();
+      /*This part of code deal with hash value and search form values, for exemplo
+        User came from home with a loja=verao and a search=Tule, then its hash is http://institucionalteste/briefing/app.html#search/verao/tule
+        Then, this same user do a search with form search by Renda, the app do a request for rendas but hash continue ..verao/tule, didn't change to /renda
+        Then this part verify if hash's value is igual form value, if it isn't change reload hash's value*/                  
+        
+      if(-1 !== this.mode.indexOf(val)){
+        this.navigate(this.mode, !1);
+      }
+      else{
+        this.mode="artigos-pai/"+this.loja+"/"+this.area+"/"+val;
+        this.navigate(this.mode, !1);
+      }
+      if (this.getloading() || !val) {
+        return!1;
+      }
+
+
+      
+      $('body').hasClass('pai') ? _type = "Briefing/"+this.loja+"/"+this.area+"/"+val : _type = "BriefingZwte/"+this.loja+"/"+this.code;
+      if(this.searchname === _type){
+        this.setdata(this.fdata);
+      }
+      else{
+        this.searchname=_type;
+
+        $.getJSON( nodePath + "service=SearchMaterial.svc/" + _type + "?callback=?", this.proxy(this.setdata)).fail(function() {
+          return!1;
+        }); 
+
+      }
+            
+
+      // this.setBreadcrumb(this.loja,this.area,val);
+      return this.setloading(!0), !1;
+    },
+    setdata:function(a,b){      
+      var val = this.searchEl.find(".text").val();
+      this.setBreadcrumb(a,val);
+      this.fdata = a.sortBy("MAKTX").unique();
+      this.breadEl.find(".bread-load").text(0);
+
+      if (!this.fdata.length) {        
+        // return this.modal.open("Tente novamente", "Nenhum resultado encontrado para busca.", !0), this.getloading(!1), this.breadEl.find(".bread-search span").text(""), this.filter.list = [], this.active.itens.remove(), !1;
+        return this.modal.open(),this.breadEl.find('.bread-colec a').text("").removeClass('active'),this.setloading(!1), this.searchEl.find('input').blur();
+      }  
+      
+      this.content.page = 0;
+      
+      b ? (this.data = this.fdata || this.data) : this.fdata = this.data;
+      this.content.changeview(this.view);
+      this.createbox(this.fdata, this.content.page, !0);      
+    },
+    createbox : function(a, b, d, c) {      
+      var f, m, g, n, v;      
+      c = c || this.view;
+      n = "images" === c ? "li" : "tr";
+      this.loading = !0; 
+      this.maskEl.fadeIn().find(".loader").show();
+      this.active = this.active || this.content;
+      d = this.active.itens &amp;&amp; !d ? this.active.itens.length : 0;
+      m = 300 * (b + 1) &lt; a.length ? 300 * (b + 1) : a.length;
+
+      var p, h, q, k = 300 * b, l = m - k, e = this;
+
+      this.breadEl.find(".bread-total").text(a.length);      
+      if (d &lt; a.length &amp;&amp; a[k]) {
+          f = setInterval(function() {
+              h = a[k];              
+              if (!h) {
+                  clearInterval(f);
+                  e.endloading();
+                  return !1;
+              }
+              if ("images" === c &amp;&amp; l > 0) {
+                  if (h &amp;&amp; v === h.MATNR)
+                    return !1;
+
+                  v = h.MATNR || null;                  
+                  var material = h.MATERIAL_REF.replace(' ','');
+
+                  p = new Image, q = "http://189.126.197.169/img/small/small_" + material + ".jpg", $(p).load(function() {
+                      if (!l > 0)
+                          return !1;
+                      g = new Box({
+                          item : h,
+                          view : c,
+                          tag : n,
+                          // reloadcart : e.proxy(e.reloadcart),
+                          detail : e.detail,
+                          url : this,
+                          pai : "PAI"
+                      });
+
+                      e.active.create(g.render());
+                      // Mostrando (box sendo carregados)
+                      $('.bread-box').find(".bread-load").text(k+1);
+
+                      l--;
+                      k++;
+                  }).error(function() {
+
+                      if (!l > 0)
+                          return !1;
+                      var a = new Image;
+                      //console.log('Sem imagem: *' + h.MATNR + " " + h.MAKTX + " " + h.GRUPO + " " + h.SGRUPO);
+                      a.src = "http://189.126.197.169/img/small/small_NONE.jpg";
+
+                      g = new Box({
+                          item : h,
+                          view : c,
+                          tag : n,
+                          // reloadcart : e.proxy(e.reloadcart),
+                          detail : e.detail,
+                          url : a
+                      });
+                      e.active.create(g.render());
+                      l--;
+                      k++;
+                  }).attr("src", q);
+              } else {
+                  if (l > 0) {
+                      return g = new Box({
+                          item : h,
+                          view : c,
+                          tag : n,
+                          // reloadcart : e.proxy(e.reloadcart),
+                          detail : e.detail,
+                          modal : e.modal
+                      }), e.active.create(g.render()), $('.bread-box').find(".bread-load").text(k+1), l--, k++, !1;
+                  } else {
+                      clearInterval(f), e.endloading();
+                  }
+              }
+          }, 0.1);
+      } else {
+          return this.endloading(), !1;
+
+      }      
+  },  
+  stage:function() {
+    var a, c;
+    "number" === typeof window.innerWidth ? (a = window.innerWidth, c = window.innerHeight) : (a = document.documentElement.clientWidth, c = document.documentElement.clientHeight);
+    return{w:a, h:c};
+  },  
+  endloading : function(a) {
+      a &amp;&amp; clearInterval(a);
+      var b = this;
+      b.active.tbody.find("tr").removeClass('odd').filter(":odd").addClass("odd");
+      b.active.tbody.find("input").parent().addClass("ajust");
+      b.active.itens.fadeIn(function() {
+          b.getloading(!1);
+      });            
+  },
+
+    /**
+    * `Set the loading state`
+    * @param {Boolean} a. If true show mask, else hide mask.
+    * @param {Boolean} b. If is false, open the loader ebook, else open just the mask div
+    */
+    setloading: function(a, b) {
+      if (!b) {
+        if (a) {
+          this.maskEl.fadeIn();
+          this.loading = !0;
+        } else {
+          this.maskEl.fadeOut();
+          this.loading = !1;
+        }
+      } else {
+        if (a) {
+          this.loader.fadeOut();
+          this.maskEl.fadeIn();
+          this.loading = !0;
+        } else {
+          this.maskEl.fadeOut();
+          this.loader.fadeIn();
+          this.loading = !1;
+        }
+      }
+      return this.loading;
+    },
+
+    /**
+    * `Return loading status`
+    *@return {boolean} status - return loading status
+    *
+    */
+    getloading:function(a){
+      a &amp;&amp; !this.loading ? (this.maskEl.fadeIn(), this.loading = !0) : !1 === a &amp;&amp; this.loading &amp;&amp; (this.maskEl.fadeOut(), this.loading = !1);
+      return this.loading;
+    },
+    getfdata:function(){
+      return this.fdata;
+    },
+    reset:function(){
+      //this.fdata = [];
+      this.itens.remove();
+      this.itens = $([]);
+    }
+  });
+  new App;
+  Spine.Route.setup();
+});</pre>
+	</article>
+</section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		DocStrap Copyright © 2012-2014 The contributors to the JSDoc3 and DocStrap projects.
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0</a>
+		on Tue May 26th 2015 using the <a
+			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<!--<script src="scripts/sunlight.js"></script>-->
+	<script src="scripts/docstrap.lib.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>
+		$( function () {
+			$( "[id*='$']" ).each( function () {
+				var $this = $( this );
+
+				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+			} );
+
+			$( "#toc" ).toc( {
+				anchorName  : function ( i, heading, prefix ) {
+					return $( heading ).attr( "id" ) || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : "100px"
+			} );
+
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+			$( '.dropdown-toggle' ).dropdown();
+//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+				var $this = $( this );
+
+				var example = $this.find( "code" );
+				exampleText = example.html();
+				var lang = /{@lang (.*?)}/.exec( exampleText );
+				if ( lang && lang[1] ) {
+					exampleText = exampleText.replace( lang[0], "" );
+					example.html( exampleText );
+					lang = lang[1];
+				} else {
+					lang = "javascript";
+				}
+
+				if ( lang ) {
+
+					$this
+						.addClass( "sunlight-highlight-" + lang )
+						.addClass( "linenums" )
+						.html( example.html() );
+
+				}
+			} );
+
+			Sunlight.highlightAll( {
+				lineNumbers : true,
+				showMenu : true,
+				enableDoclinks : true
+			} );
+		} );
+	 </script>
+
+
+
+	<!--Navigation and Symbol Display-->
+	
+
+
+	<!--Google Analytics-->
+	
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  $( "input[name='start']" ).datepicker({
+   defaultDate: "+1w",
+   changeMonth: true,
+   numberOfMonths: 2,
+   monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+   monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+   dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+   dateFormat:"dd/mm/yy",
+   minDate: new Date(),
+   onClose: function( selectedDate ) {
+    $( "input[name='end']" ).datepicker( "option", "minDate", selectedDate );
+   }
+  });
+  $( "input[name='end']" ).datepicker({
+   defaultDate: "+1w",
+   changeMonth: true,
+   numberOfMonths: 2,
+   monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+   monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+   dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+   dateFormat:"dd/mm/yy",
+   onClose: function( selectedDate ) {
+    $( "input[name='start']").datepicker( "option", "maxDate", selectedDate );
+   }
+  });
+</script>

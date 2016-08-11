@@ -1,0 +1,17 @@
+nOVO Layout Mobile para Ebook - FEITO
+Corrigir ao clicar em um item sobe para o topo da lista de resultados - FEITO
+Mostras todas as composicoes na tela de detalhes - FEITO
+Você quis dizer - FEITO
+CallBack para timeout na busca
+Organizar a casa com comentarios
+implementar de vez a documentação
+
+
+/////////////////////////
+
+METAS TECNOLOGIA
+
+Less
+Grunt
+JsDocs Completo
+Kraken otimizar imagens

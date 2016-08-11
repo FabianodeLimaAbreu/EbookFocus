@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Ebook - Login</title>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="description" content="">
+      <meta name="author" content="Focus">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300" rel="stylesheet" type="text/css">
+      <!-- build:css css/styles.min.css-->
+      <link href="css/reset.css" rel="stylesheet">
+      <link href="css/styles.css" rel="stylesheet">
+      <!-- endbuild-->
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="icon" type="image/icon" href="favicon.ico">
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-22152133-24', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+      <!--[if gte IE 9]<html class="ie9"><![endif]-->
+      <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><html class="ie8"><![endif]-->
+  </head>
+  <body class="login">
+    <div id="wrap">
+      <div class="login_entrance">
+        <div class="login_fixed">
+          <div class="login_container">
+            <div class="form_fixed">
+              <div class="form_container">
+                <div class="form_header">
+                  <span class="logo"></span>
+                </div>
+                <h1>Login:</h1>
+                <form>
+                  <div class="form-group">
+                    <input id="insertText" type="text" required="required" autocomplete="off" class="form-control" placeholder="Login/E-mail">
+                  </div>
+                  <div class="form-group">
+                    <input id="insertText" type="password" required="required" autocomplete="off" class="form-control" placeholder="Senha">
+                  </div>
+                  <div class="button-container">
+                    <p class="warn">Login ou Senha incorretos!</p>
+                    <button type="submit" class="icon enter" alt="list">Entrar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="mask">
+          <img src="images/loader.gif" class="loader">
+      </div>
+    </div>
+    <script src="js/lib/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/methods.js"></script>
+    <script src="js/lib/placeholders.min.js"></script>
+    <!-- build:js js/login.js -->
+    <script src="js/login.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

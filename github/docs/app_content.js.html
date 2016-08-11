@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>DocStrap Source: app/content.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">DocStrap</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="module-App.html">App</a>
+						</li>
+						
+						<li>
+							<a href="module-Content.html">Content</a>
+						</li>
+						
+						<li>
+							<a href="module-Login.html">Login</a>
+						</li>
+						
+						<li>
+							<a href="module-Spotlight.html">Spotlight</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="App.html">App</a>
+						</li>
+						
+						<li>
+							<a href="Content.html">Content</a>
+						</li>
+						
+						<li>
+							<a href="Login.html">Login</a>
+						</li>
+						
+						<li>
+							<a href="Spotlight.html">Spotlight</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: app/content.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">/**
+*@fileOverview Content's page with Modal, Content and Boxes classes
+* @module Modal
+* @module Content
+*
+*/
+
+/**
+* Spotlight's class and actions
+* @exports Spotlight
+* @constructor
+*/
+window.Modal = Spine.Controller.sub({
+  elements:{
+     ".modal-content":"content", ".tut-content":"contut", ".tut-list li":"buttons", ".pag-list":"dots", ".tut-box":"box", ".modal-text h2":"title", ".modal-text p":"msg"
+  }, 
+  events:{
+    "click .bclose":"close",/* "click .modal-buttons a":"action",*/ "click .tut-list li":"select", "click .pag-list li":"page"
+  }, 
+  /**
+  * Open Modal with title and contentMessage
+  * @param {String} a - Title to modal
+  * @param {String} b - Content Message to modal
+  * @memberOf ModalHome#
+  * @name open
+  */
+  open : function(a,b,c,d){
+    a = a || "Titulo da Mensagem";
+    b = b || "";
+    this.content.removeClass("bad");
+    c &amp;&amp; this.content.addClass("bad");
+    this.title.text(a.capitalize());
+    this.msg.html(b);
+    this.el.fadeIn();
+    if(d &amp;&amp; "function" === typeof d)
+      this.callback = d;
+  },
+
+  /**
+  * Open Modal with tutorial set
+  * @param {event} a - click button to tutorial
+  * @memberOf ModalHome#
+  * @name openTutorial
+  */
+  openTutorial : function(a){
+    a = a || 0;
+    this.el.addClass("tutorial");
+    this.content.removeClass('bad');
+    this.buttons.eq(a).trigger("click");
+    this.el.fadeIn();
+  },
+
+  /**
+  * Close Modal
+  * @param {event} a - click button to close
+  * @memberOf ModalHome#
+  * @name close
+  */
+  close : function(a){
+    if("object" === typeof a) {
+        a.preventDefault(), $(a.target);
+    }
+    this.el.fadeOut(function() {
+      $(this).attr('class','hide');
+    });
+    this.callback &amp;&amp; this.callback();
+  },
+
+  /**
+  * Change page to slideshow
+  * @param {event} a - click button to close
+  * @memberOf ModalHome#
+  * @name page
+  */
+  page : function(a){
+    if("object" === typeof a) {
+        a.preventDefault(), a = $(a.target);
+    }else {
+        return!1;
+    }
+    if(a.hasClass("sel")) {
+        return!1;
+    }
+    this.dots.find("li").removeClass("sel");
+    a.addClass("sel");
+    a = 610 * -a.index();
+    this.contut.animate({left:a}, 400);
+  },
+
+  /**
+  * Change slidepage when click at tut-list buttons. This method filter into ajax from tutorial and call This.Boxed to create the page
+  * @param {event} a - click button to close
+  * @memberOf ModalHome#
+  * @name select
+  */
+  select : function(a){
+    var b;
+    if("object" === typeof a) {
+      a.preventDefault(), a = $(a.target);
+    }else {
+      return!1;
+    }
+    if(a.hasClass("sel")) {
+      return!1;
+    }
+    this.dots.find("li").hide();
+    this.buttons.removeClass("sel");
+    a.addClass("sel");
+    b = this.tutlist.filter(function(b) {
+      return-1 !== b.MENU.toLowerCase().indexOf(a.text().toLowerCase());
+    });
+    this.boxes(b);
+  },
+
+  /**
+  * Create the Tutorial's Page itself
+  * @param {array} a - Value of two container of the page
+  * @memberOf ModalHome#
+  * @name boxes
+  */
+  boxes : function(a){
+    this.contut.empty();
+    for(var b = [], c, d = 0;d &lt; a.length;d++) {
+      c = "&lt;div class='tut-box'>&lt;span class='tut-img' style='background-position: 0px -" + parseInt(90 * (a[d].ID - 1)) + "px'>&lt;/span>&lt;h2>&lt;span class='tut-number'>" + parseInt(d + 1) + "&lt;/span>" + a[d].TITLE + "&lt;/h2>&lt;p>" + a[d].DESC + "&lt;/p>&lt;/div>", b.push(c);
+    }
+    c = Math.round(a.length / 2);
+    1 &lt; c &amp;&amp; this.dots.find("li:lt(" + c + ")").removeClass("sel").show().eq(0).addClass("sel");
+    this.contut.width(320 * a.length).html(b.join(" ")).animate({left:0}, 0);
+  },
+  init : function(){
+    this.tutlist = [];
+    this.callback = null;
+    $.getJSON("ajax/tutorial.js", this.proxy(function(a) {
+      this.tutlist = a;
+    }));
+  }
+});
+
+/**
+* Spotlight's class and actions
+* @exports Content
+* @constructor
+*/
+window.Content = Spine.Controller.sub({
+  elements:{
+  }, 
+  events:{
+  }, 
+  changeview:function(a){
+    if(a === "images"){
+      this.container=$(".viewport");
+    }
+    else{
+      this.container=$("table tbody");
+    }
+  },
+  /**
+  * Replace all attributes of the html with the values of json
+  * @param {String} tpl - template to create itens
+  * @param {Array} data - list of object to replate template
+  * @return {String} tpl - return a String to be append to container after
+  * @memberOf Content#
+  * @name mergeData
+  */
+  mergeData:function(tpl, data) {
+    var val, i,atts;
+        if(data.hasOwnProperty("MATNR")){
+          data["IMG_MATNR"]=data.MATNR.slice(0,15);
+        }
+        atts = Object.keys(data);
+    for (i = atts.length - 1; i >= 0; i--) {
+        val = this.contentType(atts[i], data);
+        tpl = tpl.replaceAll("{{" + atts[i] + "}}", val);
+    }
+    return tpl;
+  },
+
+  /**
+  * Fill a table or list with data
+  * @param {string} tpl - string HTML Template
+  * @param {Function} callback - function to be executed after renderContent
+  * @memberOf Content#
+  * @name renderContent
+  */
+  renderContent: function(tpl, data, callback) {
+    var i;
+
+    /*for (i = 0; i &lt; data.length; i++) {
+        lines += this.mergeData(tpl, data[i]);
+    }*/
+
+    this.lines += this.mergeData(tpl, data);
+    if (callback &amp;&amp; typeof(callback) === "function") {
+        callback();
+    }else{
+        return !1;
+    }
+  },
+
+
+  /**
+  * Adjustments in the content when some attributes need a special treatment
+  * @param {String} att - Attribute to be find and treat
+  * @param {Array} data - Object to has it's attr treated
+  * @return {Object} data[att] - Value returned from a treat
+  * @memberOf Content#
+  * @name contentType
+  */
+  contentType: function(att, data) {
+    switch (att) {
+        case "CODIGO_PANTONE":
+          if(!data[att] || data[att] === " "){
+            return "Indefinido";
+          }
+          else{
+            return data[att].capitalize();
+          }
+          break;
+        case "PE":
+          var uni="";
+          if(data['UNIDADE_MEDIDA'] === "MT"){    
+            uni="m";
+          }
+          else{
+            uni=data['UNIDADE_MEDIDA'];
+          }
+          return Math.floor(data[att])+" "+uni;
+          break;
+        case "ATC":
+            var uni="";
+            if(data['UNIDADE_MEDIDA'] === "MT"){    
+              uni="m";
+            }
+            else{
+              uni=data['UNIDADE_MEDIDA'];
+            }
+            return Math.floor(data[att])+" "+uni;
+            break;
+        case "GRUPO":
+          if(this.container.hasClass('info-text-holder')){
+            return data[att];
+          }
+          else{
+            return data[att].toUpperCase();
+          }
+          break;
+        case "SGRUPO":
+          if(this.container.hasClass('info-text-holder')){
+             return data[att];
+          }
+          else{
+            return data[att].toUpperCase();
+          }
+          break;
+        case "LARGURA_UTIL":
+          return parseFloat(data[att])
+          break;
+        case "LARGURA_TOTAL":
+          return parseFloat(data[att])
+          break;
+        case "ATRIBUTOS":
+          return data[att].initialCaps();     
+          break;     
+        case "CARACTERISTICAS":
+          return data[att].initialCaps();
+          break;
+        default:
+            return data[att];
+    }
+  },
+  /**
+  * Search for a line in JSON data
+  * @param {String} key - Key to be searched
+  * @param {String} value - Value to be compared
+  * @param {Array} data - Array or json elements
+  * @memberOf Content#
+  * @name renderContent
+  */
+  searchLine: function(key, value, data) {
+      for (var i = 0; i &lt; data.length; i++) {
+          if (data[i][key] === value) {
+              return data[i];
+          }
+      }
+      return;
+  },
+
+  clean: function(){
+    $("table tbody").empty();
+    $(".viewport").empty();
+    this.lines = "";
+  },
+  reset: function(){
+    this.page = 0;
+    this.container=$(".viewport");
+    this.clean();
+    this.lines = "";
+  },
+  init : function(){
+    this.lines = "";
+    // Samples of templates
+    // {{XX}} - XX sendo o nome do atributo no objeto.
+    this.temps={
+      'images':'&lt;li class="col col-sm-1 col-sm-2 col-md-1 col-md-2 col-md-3 col-med-4 col-lg-1 col-lg-2 col-lg-3 col-lg-4 ng-scope">&lt;div class="thumbnail">&lt;a href="#detail/{{MATNR}}">&lt;img src="http://189.126.197.169/img/small/small_{{IMG_MATNR}}.jpg">&lt;/a>&lt;div class="caption">&lt;div class="caption-top">&lt;a href="#detail/{{MATNR}}" class="link">{{MATNR}}&lt;/a>&lt;h4>{{MAKTX}}&lt;/h4>&lt;p class="pantone">Pantone: {{CODIGO_PANTONE}}&lt;/p>&lt;/div>',
+      'images_estoque':'&lt;li class="col col-sm-1 col-sm-2 col-md-1 col-md-2 col-md-3 col-med-4 col-lg-1 col-lg-2 col-lg-3 col-lg-4 ng-scope">&lt;div class="thumbnail">&lt;a href="#detail/{{MATNR}}">&lt;img src="http://189.126.197.169/img/small/small_{{IMG_MATNR}}.jpg">&lt;/a>&lt;div class="caption">&lt;div class="caption-top">&lt;a href="#detail/{{MATNR}}" class="link">{{MATNR}}&lt;/a>&lt;h4>{{MAKTX}}&lt;/h4>&lt;p class="pantone">Pantone: {{CODIGO_PANTONE}}&lt;/p>&lt;/div>&lt;ul class="estoque">&lt;li class="storage line">PE: {{PE}}&lt;/li>&lt;li class="storage">ATC: {{ATC}}&lt;/li>&lt;/ul>',
+      'images_view24h':'&lt;li class="col col-sm-1 col-sm-2 col-md-1 col-md-2 col-md-3 col-med-4 col-lg-1 col-lg-2 col-lg-3 col-lg-4 ng-scope">&lt;div class="thumbnail">&lt;a href="#detail/{{MATNR}}">&lt;img src="http://189.126.197.169/img/small/small_{{IMG_MATNR}}.jpg">&lt;/a>&lt;div class="caption">&lt;div class="caption-top">&lt;a href="#detail/{{MATNR}}" class="link">{{MATNR}}&lt;/a>&lt;h4>{{MAKTX}}&lt;/h4>&lt;p class="pantone">Pantone: {{CODIGO_PANTONE}}&lt;/p>&lt;/div>&lt;ul ng-show="true" class="view_24">&lt;li>&lt;a href="/focus24h/#detail/{{MATNR}}" name="{{MATNR}}" target="_blank">&lt;p>Reserve este artigo&lt;/p>&lt;/a>&lt;/li>&lt;/ul>&lt;/div>&lt;/div>&lt;/li>&lt;/ul>',
+      'images_estoque_view24h':'&lt;li class="col col-sm-1 col-sm-2 col-md-1 col-md-2 col-md-3 col-med-4 col-lg-1 col-lg-2 col-lg-3 col-lg-4 ng-scope">&lt;div class="thumbnail">&lt;a href="#detail/{{MATNR}}">&lt;img src="http://189.126.197.169/img/small/small_{{IMG_MATNR}}.jpg">&lt;/a>&lt;div class="caption">&lt;div class="caption-top">&lt;a href="#detail/{{MATNR}}" class="link">{{MATNR}}&lt;/a>&lt;h4>{{MAKTX}}&lt;/h4>&lt;p class="pantone">Pantone: {{CODIGO_PANTONE}}&lt;/p>&lt;/div>&lt;ul class="estoque">&lt;li class="storage line">PE: {{PE}}&lt;/li>&lt;li class="storage">ATC: {{ATC}}&lt;/li>&lt;/ul>&lt;ul ng-show="true" class="view_24">&lt;li>&lt;a href="/focus24h/#detail/{{MATNR}}" name="{{MATNR}}" target="_blank">&lt;p>Reserve este artigo&lt;/p>&lt;/a>&lt;/li>&lt;/ul>&lt;/div>&lt;/div>&lt;/li>&lt;/ul>',
+      
+      'list':'&lt;tr>&lt;td>&lt;a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}&lt;/a>&lt;/td>&lt;td class="amoscode">{{MATNR}}&lt;/td>&lt;td>{{CODIGO_PANTONE}}&lt;/td>&lt;td>{{GRUPO}}&lt;/td>&lt;td>{{SGRUPO}}&lt;/td>&lt;td>-&lt;/td>&lt;td>-&lt;/td>&lt;/tr>',
+      'list_estoque':'&lt;tr>&lt;td>&lt;a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}&lt;/a>&lt;/td>&lt;td class="amoscode">{{MATNR}}&lt;/td>&lt;td>{{CODIGO_PANTONE}}&lt;/td>&lt;td>{{GRUPO}}&lt;/td>&lt;td>{{SGRUPO}}&lt;/td>&lt;td>{{PE}}&lt;/td>&lt;td>{{ATC}}&lt;/td>&lt;/tr>',
+      'list_view24h':'&lt;tr>&lt;td>&lt;a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}&lt;/a>&lt;/td>&lt;td> class="amoscode"{{MATNR}}&lt;/td>&lt;td>{{CODIGO_PANTONE}}&lt;/td>&lt;td>{{GRUPO}}&lt;/td>&lt;td>{{SGRUPO}}&lt;/td>>&lt;td>-&lt;/td>&lt;td>-&lt;/td>&lt;/tr>',
+      'list_estoque_view24h':'&lt;tr>&lt;td>&lt;a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}&lt;/a>&lt;/td>&lt;td class="amoscode">{{MATNR}}&lt;/td>&lt;td>{{CODIGO_PANTONE}}&lt;/td>&lt;td>{{GRUPO}}&lt;/td>&lt;td>{{SGRUPO}}&lt;/td>&lt;td>{{PE}}&lt;/td>&lt;td>{{ATC}}&lt;/td>&lt;/tr>',
+
+      'detail-top':'&lt;h4>{{MAKTX}}&lt;/h4>&lt;dl>&lt;dt>Código do Artigo:&lt;/dt>&lt;dd>{{MATNR}}&lt;/dd>&lt;dt>Pantone:&lt;/dt>&lt;dd class="ng-binding">{{CODIGO_PANTONE}}&lt;/dd>&lt;dt>Composição de Base:&lt;/dt>&lt;dd class="base">Carregando...&lt;/dd> &lt;dt class="adorno-title">Composição de Bordado, Revestimento, Adorno:&lt;/dt>&lt;dd class="adorno">Carregando...&lt;/dd>&lt;dt  class="conj-title">Composição de Conjunto:&lt;/dt>&lt;dd class="conj">Carregando...&lt;/dd> &lt;dt>Gram/m²:&lt;/dt>&lt;dd>{{GRAMATURA_M}} g/m²&lt;/dd>&lt;dt>Gram/m:&lt;/dt>&lt;dd>{{GRAMATURA_ML}} g/m&lt;/dd>&lt;dt>Largura Útil:&lt;/dt>&lt;dd class="ng-binding">{{LARGURA_UTIL}} m&lt;/dd>&lt;dt>Largura Total:&lt;/dt>&lt;dd class="ng-binding">{{LARGURA_TOTAL}} m&lt;/dd>&lt;dt class="rend">Rendimento&lt;/dt>&lt;dd class="rend rend-item">Carregando...&lt;/dd>&lt;dt>Grupo:&lt;/dt>&lt;dd class="ng-binding">{{GRUPO}}&lt;/dd>&lt;dt>Sub-Grupo:&lt;/dt>&lt;dd class="ng-binding">{{SGRUPO}}&lt;/dd>&lt;dt>Book:&lt;/dt>&lt;dd class="ng-binding">{{EBOOK_CODE}} / {{EBOOK_PAGE}}&lt;/dd>&lt;dt>Unidade de Medida:&lt;/dt>&lt;dd class="ng-binding">{{UNIDADE_MEDIDA}}&lt;/dd>&lt;dt class="storage">PE:&lt;/dt>&lt;dd class="storage">{{PE}}&lt;/dd>&lt;dt ng-show="estoque" class="storage">ATC:&lt;/dt>&lt;dd class="storage">{{ATC}}&lt;/dd>&lt;/dl>',
+      'detail-down':'&lt;dl>&lt;dt>Instruções de Lavagem:&lt;/dt>&lt;dd class="wash ng-binding">{{ETIQUETA}}&lt;/dd>&lt;br>&lt;dt>Utilização:&lt;/dt>&lt;dd class="util">Carregando...&lt;/dd>&lt;br>&lt;dt>Atributos:&lt;/dt>&lt;dd class="ng-binding">{{ATRIBUTOS}}.&lt;/dd>&lt;br>&lt;dt>Características:&lt;/dt>&lt;dd class="ng-binding">{{CARACTERISTICAS}}.&lt;/dd>&lt;/dl>'
+    }
+    this.page = 0;
+    this.container=$(".viewport");
+  }
+});
+
+window.Promotion=Spine.Controller.sub({
+  elements:{
+      
+  }, 
+  events:{
+      
+  },
+  requestPromo:function(code){
+    if(this.getloading()){
+      return !1
+    }
+    $.post(nodePath + "index.js?service=Ebook.svc/getPromocao/&amp;query=0?callback=?", this.proxy(this.getPromo), "json")
+    .fail(function(){console.log("erro")});
+    /*$.post("http://was-dev/focus24/Services/Ebook.svc/getPromocao/0?callback=?", this.proxy(this.getPromo), "json")
+    .fail(function(){console.log("erro")});*/
+  },
+  getPromo:function(data){
+    this.setloading(!0,!1);
+    this.promos=data;
+    var npromo = filterBy(data, 'COD', this.codpromo);
+    var b = npromo[0].DESCRICAO;
+    this.breadarr.push(b);
+    $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/ebookPromo/" + this.codpromo + "&amp;query=0?callback=?", this.proxy(this.setdata)).fail(function () {
+      console.log("erro");
+    });
+    /*$.getJSON("http://was-dev/focus24/Services/SearchMaterial.svc/ebookPromo/" + this.codpromo + "/0?callback=?", this.proxy(this.setdata)).fail(function () {
+      console.log("erro");
+    });*/
+  },
+  init:function(){
+    this.promos=[];
+
+    this.codpromo=0;
+  },
+  reset:function() {
+    this.codpromo=0;
+  }
+});</pre>
+	</article>
+</section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		DocStrap Copyright © 2012-2014 The contributors to the JSDoc3 and DocStrap projects.
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0</a>
+		on Fri Jun 24th 2016 using the <a
+			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<!--<script src="scripts/sunlight.js"></script>-->
+	<script src="scripts/docstrap.lib.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>
+		$( function () {
+			$( "[id*='$']" ).each( function () {
+				var $this = $( this );
+
+				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+			} );
+
+			$( "#toc" ).toc( {
+				anchorName  : function ( i, heading, prefix ) {
+					return $( heading ).attr( "id" ) || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : "100px"
+			} );
+
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+			$( '.dropdown-toggle' ).dropdown();
+//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+				var $this = $( this );
+
+				var example = $this.find( "code" );
+				exampleText = example.html();
+				var lang = /{@lang (.*?)}/.exec( exampleText );
+				if ( lang && lang[1] ) {
+					exampleText = exampleText.replace( lang[0], "" );
+					example.html( exampleText );
+					lang = lang[1];
+				} else {
+					lang = "javascript";
+				}
+
+				if ( lang ) {
+
+					$this
+						.addClass( "sunlight-highlight-" + lang )
+						.addClass( "linenums" )
+						.html( example.html() );
+
+				}
+			} );
+
+			Sunlight.highlightAll( {
+				lineNumbers : true,
+				showMenu : true,
+				enableDoclinks : true
+			} );
+		} );
+	 </script>
+
+
+
+	<!--Navigation and Symbol Display-->
+	
+
+
+	<!--Google Analytics-->
+	
+
+</body>
+</html>

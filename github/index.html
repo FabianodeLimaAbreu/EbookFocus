@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Ebook - Home</title>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="description" content="">
+      <meta name="author" content="Focus">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300" rel="stylesheet" type="text/css">
+      <!-- build:css css/styles.min.css-->
+      <link href="css/reset.css" rel="stylesheet">
+      <link href="css/styles.css" rel="stylesheet">
+      <!-- endbuild-->
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="icon" type="image/icon" href="favicon.ico">
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-22152133-24', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+      <!--[if gte IE 9]>
+        <html class="ie9">
+      <![endif]-->
+      <!--[if lt IE 9]>
+        <html class="ie8">
+        <script src="js/lib/html5.js"></script>
+        <script src="js/lib/respond.min.js"></script>
+      <![endif]-->
+      <!--[if lt IE 9]><html class="ie8"><![endif]-->
+    </head>
+  <body class="home">
+    <!-- FOR CALL FACEBOOK API -->
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1541627279440608&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- END FACEBOOK API CALLER -->
+    <div class="modalie modaldefault">       
+      <div class="bg">
+        <div class="head">
+          <p>Atualize seu navegador:</p>
+          <img src="images/logo-up-ie.png"/>
+          <a class="close" href=""><span></span></a>
+        </div>
+        <div class="modalie-content">
+          <span></span>
+          <p>Para utilizar o sistema solicite a <b>atualização do Internet Explorer</b> instalado em sua máquina para a versão 10 ou superior.</p>
+          <a target="_blank" href="http://download.microsoft.com/download/7/B/D/7BD95543-D8A7-474F-8A79-34DE266AAC27/IE9-Windows7-x86-ptb.exe"><p>Atualizar</p></a>
+        </div>
+      </div>
+    </div>
+    <div id="wrap" class="hide">
+      <header>
+        <div class="container_logos">
+          <a href="http://www.focustextil.com.br" class="logo"></a>
+          <span></span>
+          <a href="./" class="ebook_logo"></a>
+        </div>
+        <div class="user-box">
+          <div class="user-box-container">
+            <ul>
+              <li><a href="#logout" class="user-logout">Sair</a></li>
+               <li><a href="#tutorial" class="user-help">Como navegar no site</a></li>
+            </ul>
+            <span class="user-name">Nome do Usuário</span>
+            <span class="icon user-icon"> </span>
+          </div>
+        </div>
+      </header>
+      <div class="home-size">
+        <div class="search_container">
+          <h1>Catálogo de Artigos</h1>
+          <h2>Conheça a lista completa de tecidos.</h2>
+          <div class="holder">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control biggest search" name="search" placeholder="Digite sua busca por: Nome, cor, base..." autofocus autocomplete="off" title="Buscar">
+                 <!--<ul class="spotlight">
+                  <li><button type="button">Teste</button></li>
+                  <li><button type="button">Teste</button></li>
+                </ul>-->
+                <dl id="spotlight">
+                  <!--<dt style="height:28px">Nome</dt><dd>Tule</dd> 
+                  <dt style="height:28px">Aspecto</dt><dd>Bordados em Tule</dd>
+                  <dt style="height:28px">Grupo</dt><dd>Tules</dd>-->
+                </dl>
+                <button type="submit" class="submit search buttons s-third"></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="viewer viewer-desc">
+          <ul class="viewer-buttons viewer-buttons-promo">
+            <li>
+              <button type="button" class="buttons ispromo floatLeft" name="promos">Ações Promocionais</button>
+            </li>
+            <li>
+              <button type="button" class="buttons ispromo floatRight" name="pdf">Critérios de Qualidade</button>
+            </li>
+          </ul>
+          <div class="promos home-view">
+            <ul>
+              <!--<li class="viewer-itens">
+                <a href="#a" class="item">
+                  <h1>Focus Home</h1>
+                  <h2>A linha Homewear da Focus!</h2>
+                </a>
+              </li>
+              <li class="viewer-itens">
+                <a href="#a" class="item">
+                  <h1>Focus Home</h1>
+                  <h2>A linha Homewear da Focus!</h2>
+                </a>
+              </li>-->
+            </ul>
+          </div>
+          <div class="pdf home-view hide">
+            <ul class="viewer-itens">
+              <li class="col-sm-2 col-sm-3 col-sm-5"><a href="pdf/qualidade.pdf" target="_blank" class="item pdf-btn">Critérios de Qualidade</a></li>
+              <li class="col-sm-2 col-sm-3 col-sm-5"><a href="pdf/qualidade_spain.pdf" target="_blank" class="item pdf-btn qld-span">Critérios de Calidad (espanhol)</a></li>
+              <li class="col-sm-2 col-sm-3 col-sm-5"><a href="pdf/qualidade_workwear.pdf" target="_blank" class="item pdf-btn workwear">Critérios de Qualidade da linha Focus workwear</a></li>
+              <li class="col-sm-2 col-sm-3 col-sm-5"><a href="pdf/jeanswear.pdf" target="_blank" class="item pdf-btn jeans">Critérios de Qualidade Jeanswear</a></li>
+              <li class="col-sm-2 col-sm-3 col-sm-5"><a href="pdf/jeanswear_spain.pdf" target="_blank" class="item pdf-btn jeans-span">Critérios de Calidad Jeanswear (espanhol)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="viewer viewer-media">
+          <ul class="viewer-buttons viewer-buttons-media">
+            <li class="social-btn">
+              <button type="button" class="buttons pinterest-btn" name="pinterest"></button>
+            </li>
+            <li class="social-btn">
+              <button type="button" class="buttons facebook-btn" name="facebook"></button>
+            </li>
+            <li class="social-btn">
+              <button type="button" class="buttons instagram-btn" name="instagram"></button>
+            </li>
+            <li class="social-btn">
+              <!--<button type="button" class="buttons youtube-btn" name="youtube"></button>-->
+              <a href="https://www.youtube.com/channel/UCpss_g8Zej-gsYbBtpSJi_w" class="buttons buttons-link youtube-btn" target="_blank"></a>
+            </li>
+          </ul>
+          <div class="social-media home-view">
+            <ul>
+              <li class="facebook viewer-itens media-box hide">
+                <div class="facebook-container">
+                  <div class="fb-page" data-href="https://www.facebook.com/focustextilbr" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/focustextilbr"><a href="https://www.facebook.com/focustextilbr">Carregando Facebook Focus Têxtil ...</a></blockquote></div></div>
+                </div>
+              </li>
+              <li class="instagram viewer-itens media-box hide">
+                <!--INSTAGRAM - Change the code below with embed instagram's post selected-->
+                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="4" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:760; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://instagram.com/p/zuknXHj-Xv/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_top">A ‪#‎FocusTêxtil apresenta três direcionamentos criativos para o Verão 15/16: Impulsos, Eternos Clássicos e Equilíbrio. Confira na série de posts que iniciamos agora a proposta de cada um para os segmentos ‪#‎masculino e ‪#‎feminino. DIRECIONAMENTO CRIATIVO - PARTE I - IMPULSOS Muito relacionado ao comportamento jovem, traz grande influência dos anos 70 embalado pelos festivais de música e o contato com a natureza. A sofisticação do Boho Style junto ao folk propõem uma mistura de estilos despretensiosa, solta e cheia de novidades. O visual dos ícones do rock mais ´pesado´ do final dos anos 70 e início dos 80 traz, em contraponto, o estilo body-con com looks total black. #feminino #FocusTêxtil</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Uma foto publicada por Focus Textil (@focustextil) em <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-03-02T13:53:08+00:00">Mar 2, 2015 às 5:53 PST</time></p></div></blockquote>
+                <!--END INSTAGRAM-->
+              </li>
+              <li class="pinterest viewer-itens media-box hide">
+                <a data-pin-do="embedUser" href="http://br.pinterest.com/focustextil/"  data-pin-scale-height="320" data-pin-board-width="760">Visite o perfil da Focus Têxtil no Pinterest...</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footerside">
+        <div class="btnside">
+          <button type="button" class="buttons backtotop">Voltar ao Topo</button>
+        </div>
+        <footer class="footer"><p>© Copyright Focus Têxtil</p></footer>
+      </div>
+      
+      <div class="mask"> 
+        <img src="images/loader.gif" class="loader">
+      </div>
+
+    <div id="modal" class="hide">
+      <div class="modal-content">
+        <a href="#close" class="bclose s-third neat"></a>
+        <span class="big-icon"></span>
+        <div class="modal-text">
+          <h2></h2>
+          <p></p>
+        </div>
+        <div class="view-content">
+          <h1 class="tut-title"></h1>
+          <div class="tut-view">
+            <div class="tut-content">
+              <div class="tut-box">
+                <span class="tut-img"></span>
+                <h2><span class="tut-number">1</span>Inicio</h2>
+                <p></p>
+              </div>
+              <div class="tut-box">
+                <span class="tut-img"></span>
+                <h2><span class="tut-number">1</span>Inicio</h2>
+                <p></p>
+              </div>
+              <div class="tut-box">
+                <span class="tut-img"></span>
+                <h2><span class="tut-number">1</span>Inicio</h2>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <ul class="pag-list">
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <ul class="tut-list">
+          <li>Home</li>
+          <li>Resultado</li>
+          <li>Detalhe</li>
+        </ul>
+      </div>
+    </div>  
+    <div id="alt-menu">
+      <ul>
+        <!--<li><a href="#mail"><span class="icon neat user-mail"></span>Falar com Representante</a></li>-->
+        <li><a href="#tutorial" class="user-help">Como Navegar</a></li>
+        <li><a href="#logout" class="user-logout">Sair</a></li>
+      </ul>
+    </div>  
+
+    <div id="fb-root"></div>
+    <script src="js/lib/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/methods.js"></script>
+    <script src="js/lib/placeholders.min.js"></script>
+    <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+    <!-- build:js js/home.js -->
+    <script type="text/javascript" src="js/home.js"></script>
+    <!-- endbuild -->
+    <script>
+      /*********Working with update for ie8*********************/
+      if($("html").hasClass("ie8") && !$.cookie("ie8")){
+        $.cookie("ie8", "Usuário do ie8", {expires:30, path:"/"});
+        $("div.modalie").fadeIn("slow");
+      }
+      $(".close").bind('click', function(event) {
+        event.preventDefault();
+        $("div.modaldefault").fadeOut("slow");
+      });
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1541627279440608&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+  </body>
+</html>

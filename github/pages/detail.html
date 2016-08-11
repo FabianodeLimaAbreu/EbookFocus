@@ -1,0 +1,111 @@
+<div ng-class="{large:larg()}" class="detail">
+  <!--<button ng-click="close()" class="go_back"></button>-->
+  <div class="top-size">
+    <button type="button" class="buttons goback m-ten">Voltar</button>
+  </div>
+  <div class="down-size">
+    <div class="info-back" ng-class="{blackweek:blackweek}">
+      <div class="image_detail"></div>
+    </div>
+    <div move="toggle" class="info-box">
+      <div class="info-column toggle">
+        <div class="info-top">
+          <div class="info-list">
+            <ul class="info-list-itens">
+              <li ng-show="mcolor" class="">
+                <button icon-btn="icon-btn" class="icon-info unsel bcolor">Cores</button>
+              </li>
+              <li ng-show="mrapport" class="ng-hide">
+                <button icon-btn="icon-btn" class="icon-info disable unsel brapport">Rapport</button>
+              </li>
+              <li><a ng-href="/library/jeans/recepies/.pdf" target="_blank" class="icon-info unsel disable lavado" href="/library/jeans/recepies/.pdf">Lavado</a></li>
+              <li><a ng-href="/library/jeans/fichas/.pdf" target="_blank" class="icon-info unsel disable ficha" href="/library/jeans/fichas/.pdf">Ficha</a></li>
+              <li>
+                <button class="icon-info disable unsel trainning">Vídeo</button>
+              </li>
+
+              <!--<li><a ng-href="/library/jeans/fichas/.pdf" target="_blank" class="icon-info unsel disable trainning" href="/library/jeans/fichas/.pdf">Treinamento</a></li>-->
+              <li class="last">
+                <!--<a href=",/focus24h/#detail/P11AC0007104905" target="_blank" class="icon-info unsel view24h hide">Reservar</a>-->
+                <button icon-btn="icon-btn" class="icon-info unsel view24h">Reservar</button>
+              </li>
+            </ul>
+          </div>
+          <div class="info-text">
+            <div class="info-text-holder">
+              <!--<h4>CETIM LISO OURO</h4>
+              <dl>
+                <dt>Código do Artigo:</dt>
+                <dd>P11AC0007104905</dd>
+                <dt>Composição de base:</dt>
+                <dd class="ng-binding">100% Poliester</dd> 
+                <dt>Composição de Adorno:</dt>
+                <dd class="ng-binding">82% Viscose / 18% Algodão</dd> 
+                <dt>Composição de Conjunto:</dt>
+                <dd class="ng-binding">46% Viscose / 44% Poliester / 10% Algodão</dd> 
+                <dt>Gram/m²:</dt>
+                <dd></dd>
+                <dt>Gram/m:</dt>
+                <dd></dd>
+                <dt>Largura Útil:</dt>
+                <dd class="ng-binding">2.95 m</dd>
+                <dt>Largura Total:</dt>
+                <dd class="ng-binding">3 m</dd>
+                <dt>Rendimento:</dt>
+                <dd class="ng-binding">0 m/Kg</dd>
+                <dt>Grupo:</dt>
+                <dd class="ng-binding">Acetinados</dd>
+                <dt>Sub-Grupo:</dt>
+                <dd class="ng-binding">Lisos</dd>
+                <dt>Book:</dt>
+                <dd class="ng-binding">36 / 36.020K</dd>
+                <dt>Unidade de Medida:</dt>
+                <dd class="ng-binding">MT</dd>
+                <dt ng-show="estoque" class="">PE:</dt>
+                <dd ng-show="estoque" class="ng-binding">8383 m</dd>
+                <dt ng-show="estoque" class="">ATC:</dt>
+                <dd ng-show="estoque" class="ng-binding">4889 m</dd>
+              </dl>-->
+
+              <!-- TRANSACAO MM03 - P11TP0213508062 -->
+
+              <!-- Composição de base: PERCENT1 --><!-- CMP1 -->
+
+              <!--Composição de Adorno: PERCENT1_BRA_FT1 --><!-- COMP1_BRA_FT1 / --> <!-- PERCENT2_BRA_FT1 --><!-- COMP2_BRA_FT1 -->
+
+              <!-- Composição de Conjunto: PERCENT1_CJ_FT1 --><!-- COMP1_CJ_FT1 --> 
+              <!-- PERCENT2_CJ_FT1 --><!-- COMP2_CJ_FT1   --> 
+              <!-- PERCENT3_CJ_FT1 --><!-- COMP3_CJ_FT1 -->
+
+            </div>
+          </div>
+        </div>
+        <div class="info-text info-text2">
+          <!--<dl>
+            <dt>Instruções de Lavagem:</dt>
+            <dd class="wash ng-binding">QIZPU</dd><br>
+            <dt>Utilização:</dt>
+            <dd class="ng-binding">Não possui.</dd><br>
+            <dt>Atributos:</dt>
+            <dd class="ng-binding">Artigo com ligamento cetim, 100% poliester, tinto em peca, composto por filamentos texturizado na trama e fios lisos no urdume.</dd><br>
+            <dt>Características:</dt>
+            <dd class="ng-binding">Não possui.</dd>
+          </dl>-->
+        </div>
+        <h6>A representação da cor pode variar conforme a regulagem do seu monitor. Para visualização exata, entre em contato com seu representante.</h6>
+      </div>
+      <div class="info-side">
+        <div ng-show="colorActive" class="info-color">
+          <h5>Clique na cor desejada para visualizar o artigo</h5>
+          <div class="ul color-list">
+            <!--<li ng-repeat="color in colors" class="ng-scope"><a ng-href="result.html#/decoracao/almofadas/detail/P11AC0007000027" class="color-thumb" href="result.html#/decoracao/almofadas/detail/P11AC0007000027"><img ng-src="/library/colors/00027.jpg" width="80" height="80" class="color-thumb" src="/library/colors/00027.jpg"><span class="color-name ng-binding">Branco</span></a></li>-->
+          </div>
+        </div>
+        <div ng-show="rapportActive" class="info-rapport">
+          <h5>Imagem ilustrativa do rapport do artigo.</h5>
+          <div class="view-rapport"><img src="http://189.126.197.169/img/rapport/raprt_P11AF0556900084.jpg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
