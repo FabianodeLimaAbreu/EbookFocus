@@ -172,6 +172,7 @@ window.Modal = Spine.Controller.sub({
     $(".product").removeClass("edit");
     $(".product .add-promo").addClass("remove");
     $(".onfocus .add-promo").removeClass("remove");
+    $(".onfocus .page-container").css("height","auto");
     $(".import").addClass("disabled").find(".filemask").addClass("disabled").find("input").attr("disabled","disabled");
     $( "input[name='endpromo']" ).attr("disabled","disabled");
     $(".end-desc").attr("disabled","disabled");
@@ -204,6 +205,7 @@ window.Modal = Spine.Controller.sub({
       }
       else{
         //Else editing page
+        $("body").removeClass("edit");
         window.history.go(-1);
       }
       //Close modal
@@ -445,7 +447,7 @@ window.Content = Spine.Controller.sub({
   * This method receive the list of materials and write it's properties at product table
   */
   listMaterial:function(list,table){
-    //console.log("sets");
+    console.log(this.container);
     var i,length,fhtml="";
     length=list.length;
     this.active=[];
@@ -461,10 +463,10 @@ window.Content = Spine.Controller.sub({
         this.active.push({"MATNR":list[i].MATNR,"MAKTX":list[i].MATNR,"PE":list[i].PE,"ATC":list[i].ATC,"COD":i});
       }
       if(this.container === "images"){
-        this.el.find(table+" .viewitem").append(fhtml);
+        this.el.find(table+" .viewitem").html(fhtml);
       }
       else{
-        this.el.find(table+" .product .scrollContent").append(fhtml);
+        this.el.find(table+" .product .scrollContent").html(fhtml);
       }
       this.showByParts(list,table);
       this.setloading(!1);
@@ -480,10 +482,10 @@ window.Content = Spine.Controller.sub({
         list[i].COD=i; //Create a attribute COD into object with it's index as value
       }
       if(this.container === "images"){
-        this.el.find(table+" .viewitem").append(fhtml);
+        this.el.find(table+" .viewitem").html(fhtml);
       }
       else{
-        this.el.find(table+" .product .scrollContent").append(fhtml);
+        this.el.find(table+" .product .scrollContent").html(fhtml);
       }
       this.setloading(!1);
     }
@@ -586,7 +588,8 @@ window.Content = Spine.Controller.sub({
         complet = !1;
         if(!obj.value || obj.value.length<4) {
           //if this input value is null
-          return $(this).addClass('error'), !1;
+          return $(this).addClass('error'), content.setloading(!1), !1;
+
         }
         else{
           if($(this).hasClass('error')){
@@ -713,9 +716,6 @@ window.Content = Spine.Controller.sub({
     a.preventDefault();
     var index,MATNR,id;
     id=parseInt($(a.target).attr("name")); //Receive name of link and parse it to Int datatype
-    console.dir(this.focusitens);
-    console.log(id);
-    console.dir($(a.target));
     MATNR=this.focusitens[id].MATNR || this.focusitens[id].Codigo;
     index=this.indice(id,!0) || 0; //Verify if this item even is at itensAdd object or pass 0 as value
     if($(a.target).hasClass("remove")){
@@ -1013,13 +1013,12 @@ window.Content = Spine.Controller.sub({
     this.container="list";
   },
   reset:function() {
-    console.log("dsa");
     this.focusitens=[];
     this.focusitens2=[];
     this.table.addClass("hide");
     this.dropdown.hide();
     this.clean();
-    this.container="list";
+    //this.container="list";
     this.el.find(".tab-2 input[name='description']").attr("disabled","disabled");
     this.el.find(".tab-2 input[name='search']").attr("disabled","disabled");
     this.el.find(".import").addClass("disabled").find(".filemask").addClass("disabled").find("input").attr("disabled","disabled");

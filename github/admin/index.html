@@ -24,7 +24,7 @@
       <header>
         <div class="topline">
           <a href="" class="logo"></a>
-          <h1>Administração e-Book</h1>
+          <h1>Administração e-Book / Ação Promocional</h1>
           <div class="user-box"><span class="s-quart user-icon"></span><span class="user-name">Nome do Usuário</span>
             <ul>
               <!--
@@ -38,13 +38,13 @@
         </div>
           <div class="admtitle">
             <div>
-              <h2>Ação Promocional
+              <h2><div class="back">Voltar<span class="icon"></span></div>
                 <div class="actions"><a href="#" class="third-icon edit"></a><a href="#" class="third-icon save"></a></div>
-                <div class="back">Voltar<span class="icon"></span></div>
+                
               </h2>
             </div>
           </div>
-          <div class="holder">
+          <div class="filters holder">
             <form class="search search-promo inline-form">
               <div class="form-group">
                 <input name="search" type="text" autocomplete="off" required class="text neat searchtext" placeholder="Digite o nome da promoção">
@@ -408,8 +408,6 @@
        }
       });
 
-
-
       $( "#ex1" ).datepicker({
        defaultDate: "+1w",
        changeMonth: true,
@@ -417,8 +415,11 @@
        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
        dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
-       dateFormat:"yy/mm/dd",
-       onClose: function( selectedDate ) {
+       dateFormat:"dd/mm/yy",
+       onSelect: function(dateText,obj){
+        $(this).attr("name",obj.selectedDay+"/"+(obj.currentMonth+1)+"/"+obj.currentYear);
+       },
+       onClose: function( selectedDate ){
         $( "#ex2" ).datepicker( "option", "minDate", selectedDate );
        }
       });
@@ -429,7 +430,10 @@
        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
        dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
-       dateFormat:"yy/mm/dd",
+       dateFormat:"dd/mm/yy",
+       onSelect: function(dateText,obj){
+        $(this).attr("name",obj.selectedDay+"/"+(obj.currentMonth+1)+"/"+obj.currentYear);
+       },
        onClose: function( selectedDate ) {
         $( "#ex1").datepicker( "option", "maxDate", selectedDate );
        }

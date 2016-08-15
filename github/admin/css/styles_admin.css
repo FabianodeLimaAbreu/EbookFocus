@@ -83,7 +83,8 @@ body.mobile #wrap{display:none;}
 .admin .third-icon{float: left; background:url(../../images/gui_promocoes.png) no-repeat; width: 30px; height: 30px; margin:0; cursor: pointer;}
 
 /*Title*/
-.admtitle{position: relative;float: left;height: 20px;width: 100%;text-align: center;padding: 20px 0px}
+.home .admtitle{display: none;}
+.admtitle{position: relative;float: left;height: 20px; width: 98%;text-align: center;padding: 20px 0px;left: 1%}
 .admin #wrap header{height: auto;}
 .admin #wrap header .topline{background: #eaf5f7;height: 60px;position: relative;float: left; width: 100%; border-bottom: 1px solid #cfe4ea;text-align: center;}
 .admtitle h2{color: #454a4c;font-size: 17pt;line-height: 35px;font-weight: 400;}
@@ -101,6 +102,8 @@ body.mobile #wrap{display:none;}
 .back:hover{color: #144e65}
 .back:hover span{background-position: -25px -30px}
 
+.admin .filters{display: none;}
+.admin.home .filters{display: block;}
 .admin nav{position: relative;float: left;width: 100%;height: 50px;}
 .admin nav ul{position: absolute;}
 .admin .dropdown{position: relative;margin: 0 auto;width: 476px;height: 40px;top: 10px;}
@@ -119,8 +122,8 @@ body.mobile #wrap{display:none;}
 .admin .add a{height: 35px;padding: 5px 12px;}
 .admin .dropdown-menu a{border-width:0 1px 1px 1px;border-style: solid;border-color: #c4c4c4}
 .dropdown-menu a:hover,.dropdown-menu a.sel{border-width:0 1px 1px 1px;}
-.admin #content{background: url(../../images/logo_home.png) no-repeat center center;margin-top: 190px;min-height: 530px;width: 100%}
-.admin.home #content{margin-top: 250px;}
+.admin #content{background: url(../../images/logo_home.png) no-repeat center center;margin-top: 140px;min-height: 530px;width: 100%}
+.admin.home #content{margin-top: 200px;}
 
 .admin .mask{position: fixed; width: 100%; height: 100%; background: url(../../images/mask.png); top: 0;left: 0;z-index: 88;margin-left: 0;display: none}
 .admin .loader{position:absolute; left: 50%; top:50%; margin-left: -40px;display: block}
@@ -223,7 +226,8 @@ body.mobile #wrap{display:none;}
 .admin .mini .scrollContent tr{border: none}
 .admin .tab-2 .scrollContent td,.admin .tab-4 .scrollContent td{background: #fdfdfd}
 
-.admin .onfocus {position: relative;float: left;background: #e6e6e6;padding: 20px 0;border-bottom: 3px solid #d3d5d6;width: 100%;}
+.admin .onfocus {position: relative;float: left;display: none;background: #e6e6e6;padding: 10px 0 40px;border-bottom: 3px solid #d3d5d6;width: 100%;}
+.admin.edit .onfocus{display: block}
 .admin .onfocus .scrollContent tr{border-left:1px solid #d3d5d6}
 .admin .onfocus .scrollContent td{background: #f3f3f3}
 .admin .product .scrollContent td{background: #fff}
@@ -235,7 +239,7 @@ body.mobile #wrap{display:none;}
 .table-form .form-group label{margin: 5px;display: block;}
 .table-form .form-group.comboact label{margin: 0;margin-bottom: 5px}
 .admin .table-form .form-group input{height: 40px;border: 1px solid #d3d5d6;margin: 10px 0 0;background: #fdfdfd;color: #4a4b4d;font-size: 10pt;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
-.admin .table-form .form-group input[disabled]{background: #F2F3F5;color: #ACB6BF;}
+.admin .table-form .form-group input[disabled],.text[disabled]{background: #F2F3F5;color: #ACB6BF;}
 .admin .table-form .form-group input[name="description"]{width: 100%;}
 .admin .table-form.inline-form .form-group.has-block{display: block;}
 .admin input.error{border: 1px solid #CF1413 !important}
@@ -248,7 +252,7 @@ body.mobile #wrap{display:none;}
 
 .admin .search{width: 100%;margin-bottom: 10px;left: 0;height: 60px}
 .admin .search.search-promo{display: none;}
-.admin.home .search.search-promo{display: block;}
+.admin.home .search.search-promo{display: block;margin-top: 10px}
 .admin .import{position: relative;float: left;}
 .admin .import a{background: #7abecc;margin-left: 10px}
 .admin .import a:hover,.admin .import a.sel{background: #5b8f9e;}
@@ -598,14 +602,14 @@ body.mobile #wrap{display:none;}
 #wrap .holder,.title .holder{position: relative; width:960px; margin: 0 auto}
 #wrap .search-promo .holder{width: 640px}
 
-#wrap .mask{position: fixed; width: 960px; height: 100%; background: url(../../images/mask.png); top: 150px; display: none; z-index: 88;left:50%; margin-left:-480px;}
+#wrap .mask{position: fixed; width: 100%; height: 100%; background: url(../../images/mask.png); top: 150px; display: none; z-index: 88;}
 #wrap .otop{top: 200px; z-index: 98;}
 #wrap .adtop{top: 190px; z-index: 222;}
 #wrap .loader{position:absolute; left: 50%; top:30%; margin-left: -40px;}
 
 #wrap .logo{float:left; height:40px; width:140px; margin:10px 15px; background-image:url(../../images/logo_big.png)}
 
-.user-box{position:relative;float:right; min-width:165px;height:40px;font-size:9pt;color:#217fa5;margin:13px 0 0;}
+.user-box{position:relative;float:right; min-width:165px;height:40px;font-size:9pt;color:#217fa5;margin:13px 0 0;right: 15px}
 .user-box span{float:left;}
 .user-box ul{margin-top:25px;}
 .user-box ul span{padding:0 5px;}
@@ -1361,6 +1365,6 @@ div.content a p{
 
 @media (min-height: 850px) {
     .admin.home .page-container{
-        height: 500px
+        height: 550px
     }
 }

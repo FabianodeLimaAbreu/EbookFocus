@@ -299,7 +299,7 @@ window.Content = Spine.Controller.sub({
     this.lines = "";
   },
   init : function(){
-1    this.lines = "";
+    this.lines = "";
     // Samples of templates
     // {{XX}} - XX sendo o nome do atributo no objeto.
     this.temps={
@@ -309,12 +309,12 @@ window.Content = Spine.Controller.sub({
       'images_estoque_view24h':'<li class="col col-sm-1 col-sm-2 col-md-1 col-md-2 col-md-3 col-med-4 col-lg-1 col-lg-2 col-lg-3 col-lg-4 ng-scope"><div class="thumbnail"><a href="#detail/{{MATNR}}"><img src="http://189.126.197.169/img/small/small_{{IMG_MATNR}}.jpg"></a><div class="caption"><div class="caption-top"><a href="#detail/{{MATNR}}" class="link">{{MATNR}}</a><h4>{{MAKTX}}</h4><p class="pantone">Pantone: {{CODIGO_PANTONE}}</p></div><ul class="estoque"><li class="storage line">PE: {{PE}}</li><li class="storage">ATC: {{ATC}}</li></ul><ul ng-show="true" class="view_24"><li><a href="/focus24h/#detail/{{MATNR}}" name="{{MATNR}}" target="_blank"><p>Reserve este artigo</p></a></li></ul></div></div></li></ul>',
       
       'list':'<tr><td><a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}</a></td><td class="amoscode">{{MATNR}}</td><td>{{CODIGO_PANTONE}}</td><td>{{GRUPO}}</td><td>{{SGRUPO}}</td><td>-</td><td>-</td></tr>',
-      'list_estoque':'<tr><td><a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}</a></td><td class="amoscode">{{MATNR}}</td><td>{{CODIGO_PANTONE}}</td><td>{{GRUPO}}</td><td>{{SGRUPO}}</td><td>{{PE}}</td><td>{{ATC}}</td></tr>',
+      'list_estoque':'<tr><td><a href="#detail/{{MATddddR}}" class="detail-liddddk">{{MAKTX}}</a></td><td class="amoscode">{{MATNR}}</td><td>{{CODIGO_PANTONE}}</td><td>{{GRUPO}}</td><td>{{SGRUPO}}</td><td>{{PE}}</td><td>{{ATC}}</td></tr>',
       'list_view24h':'<tr><td><a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}</a></td><td> class="amoscode"{{MATNR}}</td><td>{{CODIGO_PANTONE}}</td><td>{{GRUPO}}</td><td>{{SGRUPO}}</td>><td>-</td><td>-</td></tr>',
       'list_estoque_view24h':'<tr><td><a href="#detail/{{MATNR}}" class="detail-link">{{MAKTX}}</a></td><td class="amoscode">{{MATNR}}</td><td>{{CODIGO_PANTONE}}</td><td>{{GRUPO}}</td><td>{{SGRUPO}}</td><td>{{PE}}</td><td>{{ATC}}</td></tr>',
 
       'detail-top':'<h4>{{MAKTX}}</h4><dl><dt>Código do Artigo:</dt><dd>{{MATNR}}</dd><dt>Pantone:</dt><dd class="ng-binding">{{CODIGO_PANTONE}}</dd><dt>Composição de Base:</dt><dd class="base">Carregando...</dd> <dt class="adorno-title">Composição de Bordado, Revestimento, Adorno:</dt><dd class="adorno">Carregando...</dd><dt  class="conj-title">Composição de Conjunto:</dt><dd class="conj">Carregando...</dd> <dt>Gram/m²:</dt><dd>{{GRAMATURA_M}} g/m²</dd><dt>Gram/m:</dt><dd>{{GRAMATURA_ML}} g/m</dd><dt>Largura Útil:</dt><dd class="ng-binding">{{LARGURA_UTIL}} m</dd><dt>Largura Total:</dt><dd class="ng-binding">{{LARGURA_TOTAL}} m</dd><dt class="rend">Rendimento</dt><dd class="rend rend-item">Carregando...</dd><dt>Grupo:</dt><dd class="ng-binding">{{GRUPO}}</dd><dt>Sub-Grupo:</dt><dd class="ng-binding">{{SGRUPO}}</dd><dt>Book:</dt><dd class="ng-binding">{{EBOOK_CODE}} / {{EBOOK_PAGE}}</dd><dt>Unidade de Medida:</dt><dd class="ng-binding">{{UNIDADE_MEDIDA}}</dd><dt class="storage">PE:</dt><dd class="storage">{{PE}}</dd><dt ng-show="estoque" class="storage">ATC:</dt><dd class="storage">{{ATC}}</dd></dl>',
-      'detail-down':'<dl><dt>Instruções de Lavagem:</dt><dd class="wash ng-binding">{{ETIQUETA}}</dd><br><dt>Utilização:</dt><dd class="util">Carregando...</dd><br><dt>Atributos:</dt><dd class="ng-binding">{{ATRIBUTOS}}.</dd><br><dt>Características:</dt><dd class="ng-binding">{{CARACTERISTICAS}}.</dd></dl>'
+      'detail-down':'<dl><dt>Instruções de Lavagem:</dt><dd class="wash ng-binding">{{ETIQUETA}}</dd><br><dt>Utilização:</dt><dd class="util">Carregando...</dd><br><dt>Atributos:</dt><dd class="ng-binding">{{ATRIBUTOS}}.</dd><br><dt>Características:</dt><dd class="ng-binding">{{CARACTERISTICAS}}.</dd><br><dt>Similaridade:</dt><dd class="similar">Carregando...</dd></dl>'
     }
     this.page = 0;
     this.container=$(".viewport");

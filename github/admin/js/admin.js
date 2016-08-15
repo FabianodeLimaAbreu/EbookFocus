@@ -59,7 +59,6 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 			this.loading = !1;
 			this.view = "list";
 			this.page = "home";
-			this.listdata=[]
 
 			this.codpromo="";
 			this.usr = jQuery.parseJSON($.cookie("portal"));
@@ -124,7 +123,7 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 					this.bedit.hide();
 					this.bsave.fadeIn();
 					this.bback.fadeIn();
-					this.el.removeClass("noscroll home");
+					this.el.removeClass("noscroll home").addClass("edit");
 					this.page = "create";
 					this.el.find(".tab-3").removeClass("hide");
 					this.formulario.combolist.eq(a).trigger("click");
@@ -170,7 +169,9 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 			if (this.loading){
 				return !1;
 			}
-		    a.hasClass("sel") || (this.viewEl.find("button").removeClass("sel").addClass("unsel"), a.addClass("sel").removeClass("unsel"), this.view = a.attr("name"),$("html").removeClass("list").removeClass("images").addClass(this.view),this.content.changeview(this.view));
+		    a.hasClass("sel") || (this.viewEl.find("button").removeClass("sel").addClass("unsel"), a.addClass("sel").removeClass("unsel"), this.view = a.attr("name"),$("html").removeClass("list").removeClass("images").addClass(this.view),$(".admin .onfocus .page-container").css("height","auto"),this.setdata(this.content.focusitens,!1,!0));
+
+		    //this.content.listMaterial(data, ".tab-2");
 		},
 
 		/**
@@ -258,7 +259,7 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
       		$("#ex2").val("");
 			this.content.filterHome=null;
 			this.filterdata= this.listdata.filter(function(a,b){
-				if(-1 !== a.DESCRICAO.indexOf($(el.target).val())){
+				if(-1 !== a.DESCRICAO.toLowerCase().indexOf($(el.target).val().toLowerCase())){
 					//console.dir(a.DESCRICAO);
 					return this;
 				}
@@ -269,14 +270,14 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 		filterByDate:function(){
 			var start,end;
 			if($("#ex1").val()){
-				start=new Date($("#ex1").val());
+				start=new Date($("#ex1").attr("name"));
 			}
 			else{
 				start=new Date("2000/01/01");
 			}
 
 			if($("#ex2").val()){
-				end=new Date($("#ex2").val());
+				end=new Date($("#ex2").attr("name"));
 			}
 			else{
 				end=new Date("2020/01/01");
@@ -348,16 +349,22 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 		*	This method is called after the request at submit method and set the focusitens array/object equal to data returned return a modal message 
 		*	error if the length of it is 0, or call tableFocus method at Content Class to write the table with itens
 		*/
-		setdata:function(data,status){
+		setdata:function(data,status,what){
 			this.content.focusitens=[];
 			this.content.focusitens = data;
+			this.content.changeview(this.view);
 			if (!this.content.focusitens.length) {
-		      return this.modal.open("Tente novamente", "Nenhum resultado encontrado para busca.", !0,!0), this.setloading(!1), this.breadEl.find(".bread-search span").text(""), this.filter.list = [], this.active.itens.remove(), !1;
+				if(what){
+		    		this.content.listMaterial(this.content.itens, ".tab-2");
+		    	}
+		      return this.setloading(!1), !1;
 		    }
 		    this.content.clean();
 		    if (this.page === "descrição") {
-		    	//In case of description page
 		    	this.content.tableFocus(".tab-2");
+		    	if(what){
+		    		this.content.listMaterial(this.content.itens, ".tab-2");
+		    	}
 		    }
 		    else{
 		    	//In case of create page
@@ -479,6 +486,7 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 		nocachePromo:function(data,status){
 			this.content.filtro=filterBy(this.content.promos,'COD',this.codpromo); //Filter the promos by the COD, searching the cod of promo in the COD field at promos list
 			this.content.setDate(this.content.filtro);
+			console.dir(data);
 			this.content.listMaterial(data, ".tab-2");
 			this.content.descPromo(this.codpromo, ".tab-2");
 		},
@@ -506,6 +514,7 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 		*	This method is used as defaut to call the listMaterial method of a promo
 		*/
 		getPromoMaterial: function(data) {
+			console.dir(data);
 			this.content.listMaterial(data, ".tab-2");
 		},
 
@@ -560,9 +569,11 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 			if (el.hasClass("sel")) {
 				//editing promo, add class "editing" to modal's content
 				this.modal.content.addClass("editing");
+				$("body").removeClass("edit");
 				this.modal.question("Desfazer as alterações?", "Todas as suas serão desfeitas!", !0, this.modal.action);
 			} else {
 				el.addClass("sel");
+				$("body").addClass("edit");
 				this.bsave.fadeIn();
 				this.contentEl.find(".tab-2 input[name='description']").removeAttr("disabled");
 				this.contentEl.find(".tab-2 input[name='search']").removeAttr("disabled");
@@ -681,6 +692,7 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 			this.listdata=[];
 			this.filterdata=[];
 			this.searchEl.find(".text").val("").blur();
+			$(".admin .onfocus .page-container").css("height","auto")
 			$(".product").removeClass("edit");
 			if(nothome){
 				this.bedit.fadeIn();

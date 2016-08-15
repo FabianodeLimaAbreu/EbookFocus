@@ -134,6 +134,7 @@ window.Detail = Spine.Controller.sub({
     this.cpmAdonoList() ? this.el.find(".adorno").text(this.cpmAdonoList()) : (this.el.find(".adorno-title").hide(),this.el.find(".adorno").hide());
     this.cpmConjList() ? this.el.find(".conj").text(this.cpmConjList()) : (this.el.find(".conj-title").hide(),this.el.find(".conj").hide());
     this.utillist();
+    this.getsimilaridade(this.item.MATNR);
     this.size();
     this.rapportlist(this.item.MATNR);
     this.recepieslist(this.item.MATNR);
@@ -206,16 +207,43 @@ window.Detail = Spine.Controller.sub({
   },
   utillist: function () {
     var context=this;
+
     if(" " === this.item.UTILIZACAO) {
       context.util.text(".");
       return!1;
     }
     $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/util&query="+ this.item.UTILIZACAO+"?callback=?", this.proxy(function(a) {
       context.util.text(a.capitalize() + ".");
+
     }));
     /*$.getJSON("http://was-dev/focus24/Services/SearchMaterial.svc/util/"+ this.item.UTILIZACAO+"?callback=?", this.proxy(function(a) {
       context.util.text(a.capitalize() + ".");
     }));*/
+
+  },
+  getsimilaridade:function(a){
+    var obj,i,length,c=[],context=this;
+    /*if(" " === this.item.UTILIZACAO) {
+      return!1;
+    }*/
+    //M11ML0049
+
+    $.getJSON( nodePath + "briefing.js?service=SearchMaterial.svc/GetSimilaridade/"+a.slice(0, 9)+"?callback=?", this.proxy(function(a) {
+
+    // $.getJSON("http://was-dev/Focus24/Services/SearchMaterial.svc/GetSimilaridade/"+a+"?callback=?", this.proxy(function(a) {
+      obj=JSON.parse(a);
+      length=obj.length;
+      // console.dir(a);
+      if(length){
+        for(i=0;i<length;i++){
+          c.push( "<b>Nome:</b> "+obj[i].MAKTX+" | <b>Código:</b> "+obj[i].MATNR+" | <b>Tipo:</b> "+obj[i].TIPO);
+        }
+        $(".similar").html("<br/>"+c.join("<br/>"));
+      }
+      else{
+        $(".similar").text("Não tem.");
+      }
+    }));
   },
   /******* BLACK WEEK CODE ****/
   getBlackWeek:function(code){
