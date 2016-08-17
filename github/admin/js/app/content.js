@@ -171,6 +171,8 @@ window.Modal = Spine.Controller.sub({
     $(".tab-2 input[name='search']").attr("disabled","disabled").val("");
     $(".product").removeClass("edit");
     $(".product .add-promo").addClass("remove");
+    $(".bread-box-onfocus .bread-search").find('span').text("");
+    $(".bread-box-onfocus .bread-total").text("0");
     $(".onfocus .add-promo").removeClass("remove");
     $(".onfocus .page-container").css("height","auto");
     $(".import").addClass("disabled").find(".filemask").addClass("disabled").find("input").attr("disabled","disabled");
@@ -246,6 +248,7 @@ window.Content = Spine.Controller.sub({
   * This method write the table focus with all objects of the search or a csv file. This method search every object of csv to write it's PE and ATC.
   */
   tableFocus:function(table,file){
+    console.log("TABLE FOCUS");
     var i,length,MATNR,MAKTX,PE,ATC,content=this,cod=[];
     this.tab=table;
     this.html="";
@@ -283,7 +286,7 @@ window.Content = Spine.Controller.sub({
         });
       }
     }
-    console.log(this.html);
+    //console.log(this.html);
 
     this.el.find(table+" .onfocus .page-container").animate({
         //Animate the table to show values
@@ -299,6 +302,8 @@ window.Content = Spine.Controller.sub({
       }
   
       self.html(content.html);
+      $(table+" .bread-box-onfocus ").find(".bread-total").text(content.focusitens.length);
+      $(table+" .bread-box-onfocus .bread-search").find("span").text($(table+" .search .text").val());
       if(content.container !== "images"){
         self=self.find("tr");
       }
@@ -323,6 +328,7 @@ window.Content = Spine.Controller.sub({
           if(file){
             //If has a csv file inserted
             //console.log("ok");
+            $(table+" .bread-box-onfocus .bread-search").find("span").text("CSV Importado!");
             content.itensAdd.push({"MATNR":""+$(this).find("a").attr("href").replace("#",""),"COD":parseInt(index)});
           }
           //Set name attribute to the link add and remove itens for user be able to remove and add the itens after
@@ -368,21 +374,21 @@ window.Content = Spine.Controller.sub({
   */
   listPromo:function(list){
     var i,length,html="";
-    length=list.length;
+    length=list.length-1;
     this.el.find(".tab-1").removeClass("hide");
     if(typeof this.filterHome ==="object"){
       //If don't need a filter
-      for(i=0;i<length;i++){
-        html+="<tr><td class='name'>"+list[i].DESCRICAO+"</td><td><a href='#desc/"+list[i].COD+"' class='third-icon description'></a></td><td><a href='#"+list[i].COD+"' class='cod'>"+list[i].COD+"</a></td><td>"+list[i].RESPONSAVEL+"</td><td>"+list[i].INICIO+"</td><td>"+list[i].FIM+"</td>";
+      for(i=length;i>=0;i--){
+        html+="<tr><td class='name'>"+list[i].DESCRICAO+"</td><td><a href='#desc/"+list[i].COD+"' class='third-icon description' title='Descrição'></a></td><td><a href='#"+list[i].COD+"' class='cod'>"+list[i].COD+"</a></td><td>"+list[i].RESPONSAVEL+"</td><td>"+list[i].INICIO+"</td><td>"+list[i].FIM+"</td>";
         html+=this.status(!0,list[i]);
         html+=this.status(!1,list[i]); //After setDate of promo, if it's active yet
       }
     }
     else{
-      for(i=0;i<length;i++){
+      for(i=length;i>=0;i--){
         if(list[i].active===this.filterHome){
           //If is true or false(object) to filter promos
-          html+="<tr><td class='name'>"+list[i].DESCRICAO+"</td><td><a href='#desc/"+list[i].COD+"' class='third-icon description'></a></td><td><a href='#"+list[i].COD+"' class='cod'>"+list[i].COD+"</a></td><td>"+list[i].RESPONSAVEL+"</td><td>"+list[i].INICIO+"</td><td>"+list[i].FIM+"</td>";
+          html+="<tr><td class='name'>"+list[i].DESCRICAO+"</td><td><a href='#desc/"+list[i].COD+"' class='third-icon description' title='Descrição'></a></td><td><a href='#"+list[i].COD+"' class='cod'>"+list[i].COD+"</a></td><td>"+list[i].RESPONSAVEL+"</td><td>"+list[i].INICIO+"</td><td>"+list[i].FIM+"</td>";
           html+=this.status(!0,list[i]);
           html+=this.status(!1,list[i]);
         }
@@ -447,7 +453,6 @@ window.Content = Spine.Controller.sub({
   * This method receive the list of materials and write it's properties at product table
   */
   listMaterial:function(list,table){
-    console.log(this.container);
     var i,length,fhtml="";
     length=list.length;
     this.active=[];
@@ -516,17 +521,25 @@ window.Content = Spine.Controller.sub({
   },
 
   showByParts:function(list,table){
-    //console.log("1");
+    $(table+" .bread-box-promo ").find(".bread-total").text(list.length);
     var length,content,nine,top,height;
     content=this;
     this.page=0;
     $(table+" .page-container").scroll(function(){
+      //console.log("1");
       length=content.active.length;
+      //console.log(list.length);
       top=$(table+" .page-container").eq(1).scrollTop()+100;
       height=$(table+" table.product").height()-$(table+" .page-container").eq(1).height();
 
       if(top>height && length<list.length){
         content.page++;
+        if((24*(content.page+1)) > list.length){
+          $(table+" .bread-box-promo ").find(".bread-page").text(list.length);
+        }
+        else{
+          $(table+" .bread-box-promo ").find(".bread-page").text(24*(content.page+1));
+        }
         content.write(list,table);
       }
     });

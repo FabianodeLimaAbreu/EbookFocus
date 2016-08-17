@@ -229,7 +229,7 @@ window.Detail = Spine.Controller.sub({
     //M11ML0049
 
     $.getJSON( nodePath + "briefing.js?service=SearchMaterial.svc/GetSimilaridade/"+a.slice(0, 9)+"?callback=?", this.proxy(function(a) {
-
+      
     // $.getJSON("http://was-dev/Focus24/Services/SearchMaterial.svc/GetSimilaridade/"+a+"?callback=?", this.proxy(function(a) {
       obj=JSON.parse(a);
       length=obj.length;
