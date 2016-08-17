@@ -286,6 +286,7 @@ require(["methods","modernizr", "sp/min","jquery.csv", "app/content"], function(
 			if(!this.filterdata.length){
 				this.filterdata = this.listdata;
 			}
+			console.log(start+" , "+end);
 			var datelist= this.filterdata.filter(function(a,b){
 				var inicio,fim;
 				_inicio = new Date(a.INICIO_ENG);

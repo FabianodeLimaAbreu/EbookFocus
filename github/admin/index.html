@@ -438,10 +438,7 @@
        dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
        dateFormat:"dd/mm/yy",
        onSelect: function(dateText,obj){
-        $(this).attr("name",obj.selectedDay+"/"+(obj.currentMonth+1)+"/"+obj.currentYear);
-       },
-       onClose: function( selectedDate ){
-        $( "#ex2" ).datepicker( "option", "minDate", selectedDate );
+        $(this).attr("name",(obj.currentMonth+1)+"/"+obj.selectedDay+"/"+obj.currentYear);
        }
       });
       $( "#ex2" ).datepicker({
@@ -453,10 +450,7 @@
        dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
        dateFormat:"dd/mm/yy",
        onSelect: function(dateText,obj){
-        $(this).attr("name",obj.selectedDay+"/"+(obj.currentMonth+1)+"/"+obj.currentYear);
-       },
-       onClose: function( selectedDate ) {
-        $( "#ex1").datepicker( "option", "maxDate", selectedDate );
+        $(this).attr("name",(obj.currentMonth+1)+"/"+obj.selectedDay+"/"+obj.currentYear);
        }
       });
     </script>
