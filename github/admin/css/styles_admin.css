@@ -213,11 +213,11 @@ body.mobile #wrap{display:none;}
     margin-right: 10px;
 }
 .select-view button.images:before{
-    background-position: -10px -501px; 
+    background-position: -10px -342px; 
 }
 
 .select-view button.list:before{
-    background-position: -50px -421px;
+    background-position: -10px -620px;
 }
 
 

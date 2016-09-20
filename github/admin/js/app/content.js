@@ -493,6 +493,7 @@ window.Content = Spine.Controller.sub({
       else{
         this.el.find(table+" .product .scrollContent").html(fhtml);
       }
+      $('table').fixedTableHeader();
       this.setloading(!1);
     }
     this.itens=list;
