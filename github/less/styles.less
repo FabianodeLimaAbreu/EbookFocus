@@ -32,7 +32,7 @@
 .m-ten{margin-bottom: 10px;}
 .m-right{margin-right: 10px;}
 .m-left{margin-left: 10px}
-
+.red{border:1px solid red;}
 html, body{
 	height:100%;
 	overflow-x:hidden;
@@ -2326,7 +2326,33 @@ div.modalie{
 		overflow-y: hidden;
 	}
 }
-
+/********************************
+*************************************         Regua    *****************/
+.rule15{
+	width: 48px;
+    height: 594px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -616px;
+    top: 31px;
+    background: url(../images/ruler15.png);
+	background-size: 100% auto;
+}
+.rule20{
+	width: 772px;
+    height: 39px;
+    display: block;
+    position: absolute;
+    z-index: 9;
+    left: 50%;
+    top: 50%;
+    margin-top: 287px;
+    margin-left: -570px;
+    background: url(../images/ruler20.png);
+    background-size: 100% auto;
+}
+.rule15, .rule20{display:none;}
 /* Black Week Tag */
 .box.blackweek a.detail:before{position:absolute;display:block;width:80px;height:42px;content:"";background:url('./images/blackweek.png');margin:1px 0 5px 35px}
 #detail .info-back.blackweek:before{position:absolute;display:block;top:0;left:240px;width:317px;height:92px;content:"";background:url('./images/blackweek-detail.png')}

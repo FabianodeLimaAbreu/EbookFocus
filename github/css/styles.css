@@ -36,6 +36,9 @@
 .m-left {
   margin-left: 10px;
 }
+.red {
+  border: 1px solid red;
+}
 html,
 body {
   height: 100%;
@@ -348,7 +351,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 18px;
   height: 30px;
-  background-position: -50px -461px;
+  background-position: -40px -341px;
   margin-right: 10px;
 }
 /*******************************
@@ -430,7 +433,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 17px;
   height: 20px;
-  background-position: -78px -461px;
+  background-position: -40px -563px;
   display: block;
   left: 5px;
 }
@@ -448,7 +451,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 20px;
-  background-position: -70px -631px;
+  background-position: -70px -623px;
   display: block;
   left: 4px;
 }
@@ -457,7 +460,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 15px;
-  background-position: -40px -719px;
+  background-position: -35px -711px;
   display: block;
   top: 6px;
   left: 5px;
@@ -573,7 +576,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 30px;
-  background-position: -10px -501px;
+  background-position: -10px -341px;
   margin-right: 10px;
 }
 .controllers-container .buttons.list {
@@ -584,7 +587,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 30px;
-  background-position: -50px -421px;
+  background-position: -68px -341px;
   margin-right: 10px;
 }
 .controllers-container .form-container {
@@ -625,7 +628,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 17px;
   height: 9px;
-  background-position: -10px -744px;
+  background-position: -38px -736px;
   margin-right: 10px;
   top: 10px;
 }
@@ -904,7 +907,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 20px;
-  background-position: -70px -601px;
+  background-position: -10px -623px;
 }
 /*.bfilter-area{
 	position: fixed;
@@ -971,7 +974,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 15px;
-  background-position: -10px -719px;
+  background-position: -65px -711px;
   right: 6px;
 }
 .filter-buttons-area .bclear:after {
@@ -1058,7 +1061,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 20px;
-  background-position: -10px -631px;
+  background-position: -67px -563px;
   top: 5px;
   left: 5px;
 }
@@ -1272,7 +1275,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 20px;
-  background-position: -10px -661px;
+  background-position: -10px -653px;
   position: relative;
   float: left;
   margin-left: 10px;
@@ -1457,52 +1460,52 @@ header .container_logos span {
 .detail .info-box .info-list .info-list-itens li .bcolor:before {
   width: 20px;
   height: 22px;
-  background-position: -70px -501px;
+  background-position: -40px -501px;
 }
 .detail .info-box .info-list .info-list-itens li .bcolor.disable:before {
   width: 20px;
   height: 22px;
-  background-position: -40px -501px;
+  background-position: -10px -501px;
 }
 .detail .info-box .info-list .info-list-itens li .brapport:before {
   width: 20px;
   height: 20px;
-  background-position: -10px -601px;
+  background-position: -40px -593px;
 }
 .detail .info-box .info-list .info-list-itens li .brapport.disable:before {
   width: 20px;
   height: 20px;
-  background-position: -10px -541px;
+  background-position: -10px -563px;
 }
 .detail .info-box .info-list .info-list-itens li .lavado:before {
   width: 20px;
   height: 20px;
-  background-position: -40px -601px;
+  background-position: -70px -593px;
 }
 .detail .info-box .info-list .info-list-itens li .lavado.disable:before {
   width: 20px;
   height: 20px;
-  background-position: -40px -541px;
+  background-position: -40px -623px;
 }
 .detail .info-box .info-list .info-list-itens li .ficha:before {
   width: 20px;
   height: 20px;
-  background-position: -40px -661px;
+  background-position: -40px -653px;
 }
 .detail .info-box .info-list .info-list-itens li .ficha.disable:before {
   width: 20px;
   height: 20px;
-  background-position: -70px -541px;
+  background-position: -10px -593px;
 }
 .detail .info-box .info-list .info-list-itens li .trainning:before {
   width: 20px;
   height: 20px;
-  background-position: -40px -571px;
+  background-position: -70px -501px;
 }
 .detail .info-box .info-list .info-list-itens li .trainning.disable:before {
   width: 20px;
   height: 20px;
-  background-position: -10px -571px;
+  background-position: -10px -533px;
 }
 .detail .info-box .info-list .info-list-itens li .view24h {
   display: none;
@@ -1510,7 +1513,7 @@ header .container_logos span {
 .detail .info-box .info-list .info-list-itens li .view24h:before {
   width: 20px;
   height: 20px;
-  background-position: -70px -661px;
+  background-position: -70px -653px;
 }
 .detail .info-top {
   min-height: 210px;
@@ -1695,7 +1698,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 17px;
   height: 18px;
-  background-position: -10px -691px;
+  background-position: -10px -683px;
   margin-right: 10px;
   top: 5px;
 }
@@ -1765,7 +1768,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 20px;
   height: 20px;
-  background-position: -10px -631px;
+  background-position: -67px -563px;
   top: 5px;
   left: 5px;
 }
@@ -2070,12 +2073,12 @@ header .container_logos span {
 #alt-menu li a.user-help:before {
   width: 20px;
   height: 20px;
-  background-position: -40px -631px;
+  background-position: -70px -533px;
 }
 #alt-menu li a.user-logout:before {
   width: 20px;
   height: 20px;
-  background-position: -70px -571px;
+  background-position: -40px -533px;
 }
 #alt-menu li a:hover {
   background: #eaeaea;
@@ -2128,7 +2131,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 15px;
   height: 15px;
-  background-position: -65px -691px;
+  background-position: -10px -711px;
 }
 #videos .tb-video {
   position: relative;
@@ -2197,7 +2200,7 @@ header .container_logos span {
   background: url("../images/sprite.png") top left no-repeat;
   width: 60px;
   height: 60px;
-  background-position: -10px -157px;
+  background-position: -10px -87px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -2207,7 +2210,7 @@ header .container_logos span {
 #videos .mejs-overlay-button:hover {
   width: 60px;
   height: 60px;
-  background-position: -10px -87px;
+  background-position: -10px -157px;
 }
 #videos .mejs-controls button {
   background: url("../images/sprite.png") top left no-repeat;
@@ -2218,34 +2221,34 @@ header .container_logos span {
 #videos .mejs-controls .mejs-play button {
   width: 30px;
   height: 30px;
-  background-position: -10px -461px;
+  background-position: -50px -461px;
   outline: 0;
 }
 #videos .mejs-controls .mejs-play button:hover {
   width: 30px;
   height: 30px;
-  background-position: -10px -341px;
+  background-position: -10px -461px;
 }
 #videos .mejs-pause button {
   width: 30px;
   height: 30px;
-  background-position: -10px -421px;
+  background-position: -50px -421px;
 }
 #videos .mejs-pause button:hover {
   width: 30px;
   height: 30px;
-  background-position: -50px -381px;
+  background-position: -10px -421px;
 }
 #videos .mejs-fullscreen-button button {
   width: 30px;
   height: 30px;
-  background-position: -10px -381px;
+  background-position: -50px -381px;
   right: 0;
 }
 #videos .mejs-fullscreen-button button:hover {
   width: 30px;
   height: 30px;
-  background-position: -50px -341px;
+  background-position: -10px -381px;
   right: 0;
 }
 #videos .mejs-time-rail .mejs-time-total {
@@ -2422,6 +2425,36 @@ div.modalie {
   height: auto;
   overflow-y: hidden;
 }
+/********************************
+*************************************         Regua    *****************/
+.rule15 {
+  width: 48px;
+  height: 594px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -616px;
+  top: 31px;
+  background: url(../images/ruler15.png);
+  background-size: 100% auto;
+}
+.rule20 {
+  width: 772px;
+  height: 39px;
+  display: block;
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  top: 50%;
+  margin-top: 287px;
+  margin-left: -570px;
+  background: url(../images/ruler20.png);
+  background-size: 100% auto;
+}
+.rule15,
+.rule20 {
+  display: none;
+}
 /* Black Week Tag */
 .box.blackweek a.detail:before {
   position: absolute;
@@ -2456,7 +2489,7 @@ div.modalie {
 .icon.user-icon {
   width: 13px;
   height: 16px;
-  background-position: -80px -421px;
+  background-position: -65px -683px;
   top: 8px;
   margin-right: 5px;
 }
@@ -2608,12 +2641,12 @@ th {
   height: 67px;
   background-position: -10px -10px;
 }
-.mejs-overlay-button_hover {
+.mejs-overlay-button {
   width: 60px;
   height: 60px;
   background-position: -10px -87px;
 }
-.mejs-overlay-button {
+.mejs-overlay-button_hover {
   width: 60px;
   height: 60px;
   background-position: -10px -157px;
@@ -2633,85 +2666,90 @@ th {
   height: 40px;
   background-position: -55px -291px;
 }
-.mejs-play_hover {
-  width: 30px;
+.item_images {
+  width: 20px;
   height: 30px;
   background-position: -10px -341px;
+}
+.actions_arrow_left {
+  width: 18px;
+  height: 30px;
+  background-position: -40px -341px;
 }
 .mejs-fullscreen-button_hover {
   width: 30px;
   height: 30px;
-  background-position: -50px -341px;
+  background-position: -10px -381px;
 }
 .mejs-fullscreen-button {
   width: 30px;
   height: 30px;
-  background-position: -10px -381px;
+  background-position: -50px -381px;
 }
 .mejs-pause_hover {
   width: 30px;
   height: 30px;
-  background-position: -50px -381px;
+  background-position: -10px -421px;
 }
 .mejs-pause {
   width: 30px;
   height: 30px;
-  background-position: -10px -421px;
-}
-.item_list {
-  width: 20px;
-  height: 30px;
   background-position: -50px -421px;
+}
+.mejs-play_hover {
+  width: 30px;
+  height: 30px;
+  background-position: -10px -461px;
 }
 .mejs-play {
   width: 30px;
   height: 30px;
-  background-position: -10px -461px;
+  background-position: -50px -461px;
+}
+.item_list {
+  width: 20px;
+  height: 30px;
+  background-position: -68px -341px;
 }
 .actions_clear {
   width: 15px;
   height: 30px;
   background-position: -80px -87px;
 }
-.actions_arrow_left {
-  width: 18px;
-  height: 30px;
-  background-position: -50px -461px;
-}
-.item_images {
-  width: 20px;
-  height: 30px;
-  background-position: -10px -501px;
-}
 .detail_colors_disabled {
   width: 20px;
   height: 22px;
-  background-position: -40px -501px;
+  background-position: -10px -501px;
 }
 .detail_colors {
   width: 20px;
   height: 22px;
+  background-position: -40px -501px;
+}
+.detail_trainning {
+  width: 20px;
+  height: 20px;
   background-position: -70px -501px;
-}
-.detail_rapport_disabled {
-  width: 20px;
-  height: 20px;
-  background-position: -10px -541px;
-}
-.detail_lavagem_disabled {
-  width: 20px;
-  height: 20px;
-  background-position: -40px -541px;
-}
-.detail_ficha_disabled {
-  width: 20px;
-  height: 20px;
-  background-position: -70px -541px;
 }
 .detail_trainning_disabled {
   width: 20px;
   height: 20px;
-  background-position: -10px -571px;
+  background-position: -10px -533px;
+}
+.menu_logout {
+  width: 20px;
+  height: 20px;
+  background-position: -40px -533px;
+}
+.menu_help {
+  width: 20px;
+  height: 20px;
+  background-position: -70px -533px;
+}
+.detail_rapport_disabled {
+  width: 20px;
+  height: 20px;
+  background-position: -10px -563px;
 }
 .icon_facebook {
   width: 11px;
@@ -2721,102 +2759,107 @@ th {
 .icon_pinterest {
   width: 17px;
   height: 20px;
-  background-position: -78px -461px;
-}
-.detail_trainning {
-  width: 20px;
-  height: 20px;
-  background-position: -40px -571px;
-}
-.menu_logout {
-  width: 20px;
-  height: 20px;
-  background-position: -70px -571px;
-}
-.detail_rapport {
-  width: 20px;
-  height: 20px;
-  background-position: -10px -601px;
-}
-.detail_lavagem {
-  width: 20px;
-  height: 20px;
-  background-position: -40px -601px;
-}
-.item_filter_combo {
-  width: 20px;
-  height: 20px;
-  background-position: -70px -601px;
+  background-position: -40px -563px;
 }
 .actions_close {
   width: 20px;
   height: 20px;
-  background-position: -10px -631px;
+  background-position: -67px -563px;
 }
-.menu_help {
+.detail_ficha_disabled {
   width: 20px;
   height: 20px;
-  background-position: -40px -631px;
+  background-position: -10px -593px;
+}
+.detail_rapport {
+  width: 20px;
+  height: 20px;
+  background-position: -40px -593px;
+}
+.detail_lavagem {
+  width: 20px;
+  height: 20px;
+  background-position: -70px -593px;
+}
+.item_filter_combo {
+  width: 20px;
+  height: 20px;
+  background-position: -10px -623px;
+}
+.detail_lavagem_disabled {
+  width: 20px;
+  height: 20px;
+  background-position: -40px -623px;
 }
 .icon_instagram {
   width: 20px;
   height: 20px;
-  background-position: -70px -631px;
+  background-position: -70px -623px;
 }
 .item_reserv_white {
   width: 20px;
   height: 20px;
-  background-position: -10px -661px;
+  background-position: -10px -653px;
 }
 .detail_ficha {
   width: 20px;
   height: 20px;
-  background-position: -40px -661px;
+  background-position: -40px -653px;
 }
 .item_reserv_blue {
   width: 20px;
   height: 20px;
-  background-position: -70px -661px;
+  background-position: -70px -653px;
 }
 .actions_backtotop {
   width: 17px;
   height: 18px;
-  background-position: -10px -691px;
+  background-position: -10px -683px;
 }
 .actions_search {
   width: 18px;
   height: 18px;
-  background-position: -37px -691px;
+  background-position: -37px -683px;
 }
 .icon_user {
   width: 13px;
   height: 16px;
-  background-position: -80px -421px;
+  background-position: -65px -683px;
 }
 .vclosebt {
   width: 15px;
   height: 15px;
-  background-position: -65px -691px;
-}
-.actions_filter {
-  width: 20px;
-  height: 15px;
-  background-position: -10px -719px;
+  background-position: -10px -711px;
 }
 .icon_youtube {
   width: 20px;
   height: 15px;
-  background-position: -40px -719px;
+  background-position: -35px -711px;
+}
+.actions_filter {
+  width: 20px;
+  height: 15px;
+  background-position: -65px -711px;
 }
 .actions_check {
   width: 18px;
   height: 12px;
-  background-position: -70px -719px;
+  background-position: -10px -736px;
 }
 .actions_arrow_down {
   width: 17px;
   height: 9px;
-  background-position: -10px -744px;
+  background-position: -38px -736px;
+}
+.actions_order_up {
+  width: 14px;
+  height: 8px;
+  background-position: -65px -736px;
+}
+.actions_order_down {
+  width: 14px;
+  height: 8px;
+  background-position: -10px -758px;
 }
 /***************
 *********************HOME e busca
@@ -2883,7 +2926,7 @@ form .label-default {
   background: url("../images/sprite.png") top left no-repeat;
   width: 18px;
   height: 18px;
-  background-position: -37px -691px;
+  background-position: -37px -683px;
   left: -4px;
 }
 .filterLav {
@@ -3305,6 +3348,10 @@ form textarea {
   }
 }
 @media (min-width: 1200px) {
+  .rule15,
+  .rule20 {
+    display: block;
+  }
   .detail {
     display: none;
     max-width: 1130px;

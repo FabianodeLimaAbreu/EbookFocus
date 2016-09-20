@@ -130,7 +130,22 @@ body.mobile #wrap{display:none;}
 
 /*Table*/
 .admin .simple-table thead{color: #217fa5;border-width: 0 0 1px;background: none;}
-.admin .simple-table th{font-size: 9pt}
+.admin .simple-table th{font-size: 9pt;cursor: pointer;}
+.admin .simple-table th.sortable:after{
+    content:"";
+    background: url(../../images/sprite.png) no-repeat;
+    background-position: -65px -736px;
+    position: absolute;
+    margin-left: 5px;
+    float: left;
+    top: 15px;
+    width: 15px;
+    height: 10px;
+}
+
+.admin .simple-table th.sorting-asc:after{
+    background-position: -10px -758px;
+}
 
 .admin thead th{border-right: none}
 

@@ -396,6 +396,7 @@ window.Content = Spine.Controller.sub({
     }
     this.promos=list;
     this.el.find(".tab-1 .scrollContent").html(html);
+    $("table").stupidtable();
     this.setloading(!1);
   },
 

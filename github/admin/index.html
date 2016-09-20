@@ -12,7 +12,7 @@
       <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
       <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300" rel="stylesheet" type="text/css">
       <link href="/library/styles/common.css" rel="stylesheet">
-      <link href="css/styles_admin.css" rel="stylesheet">
+      <link href="css/styles_admin.css" rel="stylesheet"> 
       <link rel="shortcut icon" href="favicon.ico">
       <link rel="apple-touch-icon" href="/apple-touch-icon.png">
       <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><link href="../css/iehack.css" rel="stylesheet"><![endif]-->
@@ -81,14 +81,14 @@
             <table class="simple-table scrollTable">
               <thead class="adminHeader tnine withcolor">
                 <tr>
-                  <th>Nome da promoção</th>
+                  <th class="sortable" data-sort="string">Nome da promoção</th>
                   <th>Detalhes/<br>Materiais</th>
-                  <th>Cód. da promoção</th>
-                  <th>Responsável</th>
-                  <th>Início</th>
-                  <th>Fim</th>
-                  <th>Ação</th>
-                  <th>Status</th>
+                  <th class="sortable" data-sort="int">Cód. da promoção</th>
+                  <th class="sortable" data-sort="string">Responsável</th>
+                  <th class="sortable" data-sort="int">Início</th>
+                  <th class="sortable" data-sort="int">Fim</th>
+                  <th class="sortable" data-sort="string">Ação</th>
+                  <th class="sortable" data-sort="string">Status</th>
                 </tr>
               </thead>
               <tbody class="scrollContent tnine">
@@ -402,6 +402,8 @@
     <script data-main="js/admin" src="js/lib/require-jquery.js"></script>
     <!--<![endif]-->
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/lib/stupidtable.js"></script> 
+    <script type="text/javascript" src="js/lib/stupidtable.min.js"></script>
     <script type="text/javascript">
       $( "input[name='start']" ).datepicker({
        defaultDate: "+1w",
