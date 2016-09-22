@@ -12,7 +12,7 @@ require.config({
 		sp: "spine"
 	}
 });
-require(["methods","modernizr", "sp/min","jquery.csv", "app/content", "stupidtable", "stupidtable.min"], function() {
+require(["methods","modernizr", "sp/min","jquery.csv", "app/content", "stupidtable.min"], function() {
 	window.Admin = Spine.Controller.sub({
 		el: $("body"),
 		elements: {

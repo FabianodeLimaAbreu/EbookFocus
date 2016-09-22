@@ -130,7 +130,8 @@ body.mobile #wrap{display:none;}
 
 /*Table*/
 .admin .simple-table thead{color: #217fa5;border-width: 0 0 1px;background: none;}
-.admin .simple-table th{font-size: 9pt;cursor: pointer;}
+.admin .simple-table th{font-size: 9pt}
+.admin .simple-table th.sortable{cursor: pointer}
 .admin .simple-table th.sortable:after{
     content:"";
     background: url(../../images/sprite.png) no-repeat;
@@ -166,6 +167,30 @@ body.mobile #wrap{display:none;}
     position: relative;
     float: left;
     list-style-type: none;
+}
+
+.floatThead tbody {
+    background-color: #ddd;
+    height: 100px;
+    overflow-y: auto;
+    position: absolute;
+}
+
+.floatThead th{width:210px;}
+.floatThead th+th{width:410px;}
+.floatThead th+th+th{width:920px;}
+.floatThead th+th+th+th{width:140px}
+.floatThead th+th+th+th+th{width:165px;}
+
+.floatThead td{width:210px;}
+.floatThead td+td{width:400px;}
+.floatThead td+td+td{width:910px;}
+.floatThead td+td+td+td{width:150px}
+.floatThead td+td+td+td+td{width:150px;}
+
+.tab-2 .page-container{
+    overflow-y: hidden;
+    height: 520px !important;
 }
 
 .images .floatThead{display: none;}
@@ -236,8 +261,7 @@ body.mobile #wrap{display:none;}
 .tab-1 p,.tab-2 p,.tab-4 p{font-size: 9pt;position: relative;float: left;margin-top: 20px}
 .admin .tab-2 .desc,.admin .tab-4 .desc{height: 80px}   
 /*.admin .onfocus .mini .scrollContent{height: 0}*/
-.admin .mini .scrollContent{height: 260px}
-.admin .mini .scrollContent{height: 260px}
+.admin .mini .scrollContent{height: 480px}
 .admin .mini .scrollContent tr{border: none}
 .admin .tab-2 .scrollContent td,.admin .tab-4 .scrollContent td{background: #fdfdfd}
 
@@ -354,9 +378,7 @@ body.mobile #wrap{display:none;}
     overflow-y: auto;
     top: 10px;
 }
-.admin .onfocus .page-container{
-    height: auto;
-}
+
 /*Datepicker*/
 .ui-widget {
     font-family: Verdana,Arial,sans-serif;
@@ -1353,8 +1375,7 @@ div.content a p{
 }
 
 
-/********************* media query 
-                                    ***********************/
+/********************* media query ***********************/
 @media (min-width: 1100px) {
     .admin .form-group .searchtext{
     }
@@ -1378,8 +1399,32 @@ div.content a p{
     }  
 }
 
+@media (min-height: 768px) {
+    .admin.home .page-container{
+        height: 235px
+    }
+}
+
 @media (min-height: 850px) {
     .admin.home .page-container{
-        height: 550px
+        height: 315px
+    }
+}
+
+@media (min-height: 870px) {
+    .admin.home .page-container{
+        height: 335px
+    }
+}
+
+@media (min-height: 960px) {
+    .admin.home .page-container{
+        height: 425px
+    }
+}
+
+@media (min-height: 1200px) {
+    .admin.home .page-container{
+        height: 665px
     }
 }
