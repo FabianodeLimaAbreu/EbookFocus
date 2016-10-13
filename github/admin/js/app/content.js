@@ -526,12 +526,15 @@ window.Content = Spine.Controller.sub({
     var length,content,nine,top,height;
     content=this;
     this.page=0;
-    $(table+" .page-container").scroll(function(){
+    $(table+" .scrollContent.tfive").eq(1).scroll(function(){
       //console.log("1");
       length=content.active.length;
       //console.log(list.length);
-      top=$(table+" .page-container").eq(1).scrollTop()+100;
-      height=$(table+" table.product").height()-$(table+" .page-container").eq(1).height();
+      top=$(table+" .scrollContent.tfive").eq(1).scrollTop()+100;
+      height=$(table+" .scrollContent.tfive").eq(1).height();
+      console.log("length: "+length)
+      console.log("top: "+top)
+      console.log("height: "+height)
 
       if(top>height && length<list.length){
         content.page++;
