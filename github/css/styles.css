@@ -1110,8 +1110,7 @@ header .container_logos span {
   width: 100%;
   height: auto;
 }
-.content .viewport,
-.content .floatThead {
+.content .viewport {
   position: relative;
   float: left;
   height: auto;
@@ -1119,8 +1118,7 @@ header .container_logos span {
   padding-bottom: 80px;
   display: none;
 }
-.content .viewport .col,
-.content .floatThead .col {
+.content .viewport .col {
   position: relative;
   float: left;
   list-style-type: none;
@@ -1140,11 +1138,11 @@ header .container_logos span {
 .thumbnail.blackweek:before {
   position: absolute;
   display: block;
-  width: 105px;
-  height: 55px;
+  width: 70px;
+  height: 70px;
   left: 98px;
   content: "";
-  background: url('/library/promoweek/promoweekthumb.png') no-repeat;
+  background: url('/library/connectoutlet/thumb.png') no-repeat;
   margin: -1px 0 5px -40px;
   z-index: 9;
 }
@@ -1320,11 +1318,11 @@ header .container_logos span {
   position: absolute;
   display: block;
   top: 0;
-  width: 350px;
+  width: 370px;
   height: 100px;
   left: 205px;
   content: "";
-  background: url('/library/promoweek/promoweeklarge.png');
+  background: url('/library/connectoutlet/large.png');
   z-index: 9;
 }
 .detail .info-back img {
@@ -2405,17 +2403,11 @@ div.modalie {
 }
 /********************************
 *************************************         INTERAÇÃO ENTRE PAGINAS       *****************/
-.images .floatThead {
-  display: none;
-}
 .images .viewport {
   display: block;
 }
 .list .viewport {
   display: none;
-}
-.list .floatThead {
-  display: block;
 }
 #detail-page .not-detail-bar {
   display: none;
@@ -3365,6 +3357,10 @@ form textarea {
   .detail .info-back {
     height: 15cm;
   }
+  .detail .info-back.blackweek:before {
+    left: 50%;
+    margin-left: -375px;
+  }
   .detail .go_back {
     top: 20px;
   }
@@ -3661,3 +3657,54 @@ form textarea {
 .ie8 .content .viewport .col-lg-2 {
   width: 20%;
 }
+/*.thumbnail{
+	&.blackweek:before{
+	  	position: absolute;
+		  display: block;
+		  width: 70px;
+		  height:70px;
+		  left:98px;
+		  content: "";
+		  background: url('/library/connectoutlet/thumb.png')no-repeat;	  
+		  margin: -1px 0 5px -20px;
+		  z-index: 9;
+  	}
+}
+.detail{
+	.info-back{
+		float:left;
+		width:100%;
+		max-width: 20cm;
+		height: 400px;
+  		max-height: 15.5cm;
+  		 &.blackweek:before {
+		  position: absolute;
+		  display: block;
+		  top: 0;
+		  width: 370px;
+		  height: 100px;
+		  left:50%;
+		  margin-left: -185px;
+		  content: "";
+		  background: url('/library/connectoutlet/large.png');
+		  z-index:9;
+		}
+		img{
+			float:left;
+			width:auto;
+			height:15cm;
+		}
+	}
+}
+@media(min-width:1200px){
+	.detail{
+		.info-back{
+	  		 &.blackweek:before {
+			  left:50%;
+			  margin-left: -375px;
+			}
+		}
+	}
+}
+
+@import url(import.less);*/

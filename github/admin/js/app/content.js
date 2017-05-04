@@ -526,11 +526,11 @@ window.Content = Spine.Controller.sub({
     var length,content,nine,top,height;
     content=this;
     this.page=0;
-    $(table+" .scrollContent.tfive").eq(1).scroll(function(){
+    $(table+" .page-container").eq(1).scroll(function(){
       //console.log("1");
       length=content.active.length;
       //console.log(list.length);
-      top=$(table+" .scrollContent.tfive").eq(1).scrollTop()+100;
+      top=$(table+" .page-container").eq(1).scrollTop()+600;
       height=$(table+" .scrollContent.tfive").eq(1).height();
       console.log("length: "+length)
       console.log("top: "+top)
