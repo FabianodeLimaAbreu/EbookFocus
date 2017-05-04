@@ -261,12 +261,13 @@ window.Detail = Spine.Controller.sub({
     this.rapportbt.removeClass('sel').addClass("disable");
     this.el.find('.info-rapport').hide();
 
-    $.getJSON("/library/ajax/rapport.js", this.proxy(function (a) {
+    $.getJSON("http://189.126.197.169/node/server/briefing.js?service=SearchMaterial.svc/Rapport?callback=?", this.proxy(function (a) {
       var b = a.filter(function (b) {
         return -1 !== b.MATNR.indexOf(c);
       });
       b.length && (this.rapportbt.removeClass("disable"), this.el.find('.info-rapport img').attr('src', 'http://189.126.197.169/img/rapport/raprt_' + b[0].MATNR + ".jpg"));
     }));
+    
   },
   recepieslist: function (c) {
     this.recipiebt.removeClass('sel').addClass("disable");
