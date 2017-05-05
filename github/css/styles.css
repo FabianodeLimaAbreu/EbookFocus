@@ -1110,7 +1110,8 @@ header .container_logos span {
   width: 100%;
   height: auto;
 }
-.content .viewport {
+.content .viewport,
+.content .floatThead {
   position: relative;
   float: left;
   height: auto;
@@ -1118,7 +1119,8 @@ header .container_logos span {
   padding-bottom: 80px;
   display: none;
 }
-.content .viewport .col {
+.content .viewport .col,
+.content .floatThead .col {
   position: relative;
   float: left;
   list-style-type: none;
@@ -1138,11 +1140,11 @@ header .container_logos span {
 .thumbnail.blackweek:before {
   position: absolute;
   display: block;
-  width: 70px;
-  height: 70px;
+  width: 105px;
+  height: 55px;
   left: 98px;
   content: "";
-  background: url('/library/connectoutlet/thumb.png') no-repeat;
+  background: url('/library/promoweek/promoweekthumb.png') no-repeat;
   margin: -1px 0 5px -40px;
   z-index: 9;
 }
@@ -1318,11 +1320,11 @@ header .container_logos span {
   position: absolute;
   display: block;
   top: 0;
-  width: 370px;
+  width: 350px;
   height: 100px;
   left: 205px;
   content: "";
-  background: url('/library/connectoutlet/large.png');
+  background: url('/library/promoweek/promoweeklarge.png');
   z-index: 9;
 }
 .detail .info-back img {
