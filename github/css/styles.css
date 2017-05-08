@@ -2408,8 +2408,14 @@ div.modalie {
 .images .viewport {
   display: block;
 }
+.images .floatThead {
+  display: none;
+}
 .list .viewport {
   display: none;
+}
+.list .floatThead {
+  display: block;
 }
 #detail-page .not-detail-bar {
   display: none;
