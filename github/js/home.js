@@ -229,19 +229,29 @@ function PromotionHome(el){
 	* @name render
 	*/
 	this.render = function(){
+		var first,first_html; // to set a first promo in home
 		var i,length,html="",counter=0;
 	    length=this.promos.length;
 	    this.setDate(this.promos);
 	    for(i=0;i<length;i++){
 	      if(this.promos[i].active){
-	      	counter++;
-	        html+="<li class='viewer-itens'><a class='item' href='app.html#search/express/"+this.promos[i].COD+"' name='promo'>"+"<h1>"+this.promos[i].DESCRICAO+"</h1>"+"<h2>"+this.promos[i].DescPromocao+"</h2></a></li>";
+
+	      	if(this.promos[i].COD === "20130345"){
+	      		//First promo block code, set a var to be prepend after all
+	      		first=this.promos[i];
+	      	}
+	      	else{
+	      		counter++;
+	        	html+="<li class='viewer-itens'><a class='item' href='app.html#search/express/"+this.promos[i].COD+"' name='promo'>"+"<h1>"+this.promos[i].DESCRICAO+"</h1>"+"<h2>"+this.promos[i].DescPromocao+"</h2></a></li>";
+	      	}
 	      }
 	    }
 	    if(!counter){
 	    	html+="<li class='viewer-itens'></li>";
 	    }
-	    this.el.html(html);
+	    //Set html to first promo
+	    first_html="<li class='viewer-itens'><a class='item' href='app.html#search/express/"+first.COD+"' name='promo'>"+"<h1>"+first.DESCRICAO+"</h1>"+"<h2>"+first.DescPromocao+"</h2></a></li>";
+	    this.el.html(html).prepend(first_html);
 	    this.elements.header.addClass('goDown');
 	};
 
