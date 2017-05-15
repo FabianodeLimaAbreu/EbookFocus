@@ -278,12 +278,14 @@ window.Content = Spine.Controller.sub({
         }
       }
       else{
+        this.setloading(!1);
+        this.erro("CSV com código incorreto!","Insira o codigo dos SKUs completos",!0);
+        return !1;
         //If the item's code from csv has less than 15 caracters (father cod)
-        //console.log("MENOR: "+this.focusitens[i].Codigo);
-        $.post(nodePath + "SearchMaterial.svc/ebook/&query="+this.focusitens[i].Codigo+"?callback=?", this.proxy(this.father),"json").fail(function() {
+        /*$.post(nodePath + "SearchMaterial.svc/ebook/&query="+this.focusitens[i].Codigo+"?callback=?", this.proxy(this.father),"json").fail(function() {
          // console.log("error");
           return!1;
-        });
+        });*/
       }
     }
     //console.log(this.html);
@@ -320,6 +322,11 @@ window.Content = Spine.Controller.sub({
               $.post(nodePath + "SearchMaterial.svc/ebook/&query="+$(this).find("a").attr("href").replace("#","")+"?callback=?", function(d) {
                 //console.log("DENTRO");
                 //Write it's value
+
+                /*console.log(d[0].MATNR);
+                console.log(d[0].MAKTX);
+                console.log(" -------  ");*/
+
                 context.find("#PE").text(Math.floor(d[0].PE));
                 context.find("#ATC").text(Math.floor(d[0].ATC));
               },"json");
