@@ -1,0 +1,51 @@
+﻿/*.thumbnail{
+	&.blackweek:before{
+	  	position: absolute;
+		  display: block;
+		  width: 70px;
+		  height:70px;
+		  left:98px;
+		  content: "";
+		  background: url('/library/connectoutlet/thumb.png')no-repeat;	  
+		  margin: -1px 0 5px -20px;
+		  z-index: 9;
+  	}
+}
+.detail{
+	.info-back{
+		float:left;
+		width:100%;
+		max-width: 20cm;
+		height: 400px;
+  		max-height: 15.5cm;
+  		 &.blackweek:before {
+		  position: absolute;
+		  display: block;
+		  top: 0;
+		  width: 370px;
+		  height: 100px;
+		  left:50%;
+		  margin-left: -185px;
+		  content: "";
+		  background: url('/library/connectoutlet/large.png');
+		  z-index:9;
+		}
+		img{
+			float:left;
+			width:auto;
+			height:15cm;
+		}
+	}
+}
+@media(min-width:1200px){
+	.detail{
+		.info-back{
+	  		 &.blackweek:before {
+			  left:50%;
+			  margin-left: -375px;
+			}
+		}
+	}
+}
+
+@import url(import.less);*/
