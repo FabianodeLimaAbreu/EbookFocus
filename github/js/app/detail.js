@@ -70,7 +70,10 @@ window.Detail = Spine.Controller.sub({
 
     this.infoback.removeClass('blackweek'); //BLACKWEEK
 
-    if(this.getAmosVal() !== ""){
+    if(this.getCodPromo() === "exception"){
+      this.navigate && this.navigate("search/"+this.getMode()+"/"+this.getCodPromo(), !0);
+    }
+    else if(this.getAmosVal() !== ""){
       this.navigate && this.navigate("search/"+this.getMode()+"/"+this.getAmosVal(), !0);
     }
     else{

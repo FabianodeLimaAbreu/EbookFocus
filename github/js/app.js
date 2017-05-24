@@ -159,6 +159,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
         setBreadarr:this.proxy(this.setBreadarr),
         getAmosVal:this.proxy(this.getAmosVal),
         getMode:this.proxy(this.getMode),
+        getCodPromo:this.proxy(this.getCodPromo),
         video:this.video
       });
 
@@ -214,6 +215,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
               this.promotion.codpromo = 0;
               break;
             case "express":
+            debugger;
               this.mode = "express";
               //console.log("express");
               this.tutpage = 1;
@@ -419,7 +421,6 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       d = this.codpromo ? ("SearchMaterial.svc/ebookPromo/" + this.codpromo) : "SearchMaterial.svc/ebook/";       
       //this.breadEl.find(".bread-search").show();
       this.amosval=str.removeAccents().replace(" de "," ");
-      debugger;
       if(this.promotion.codpromo === 0){
         this.navigate(this.page+"/"+this.mode+"/"+str.removeAccents().replace(" de "," "),!1);
 
@@ -818,6 +819,9 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
     },
     setBreadarr:function(a){
       this.breadarr=a || [];
+    },
+    getCodPromo:function(){
+      return this.promotion.codpromo;
     },
     getSpot:function(a){
       if(13 === a.keyCode){

@@ -369,6 +369,9 @@ window.Promotion=Spine.Controller.sub({
         html+="<li><a href='#"+a[i].capitalize()+"' name='"+a[i].capitalize()  +"' class='group_menu_item'>"+a[i].capitalize()+"</button></li>";
     }
     $(".bclear").trigger("click");
+    if(parseInt($('.bread-page').text())){
+      return !0;
+    }
     this.group_menu.html(html);
     this.group_modal.fadeIn().find(".menu-container").fadeIn();
   },
