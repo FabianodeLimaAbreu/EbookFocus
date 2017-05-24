@@ -310,7 +310,11 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       this.page_container.load("pages/"+hash+".html",function( response, status, xhr){
         switch(hash){
           case "amostras":
-          $("html").attr('id', '');
+            $("html").attr('id', '');
+            context.el.removeClass("exception_promo");
+            if(context.promotion.codpromo === "exception"){
+                context.el.addClass("exception_promo");
+            }
             if(context.mode === "artigos"){
               context.searchEl.find(".form-control").val(val);
               context.searchEl.trigger('submit');
@@ -415,6 +419,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       d = this.codpromo ? ("SearchMaterial.svc/ebookPromo/" + this.codpromo) : "SearchMaterial.svc/ebook/";       
       //this.breadEl.find(".bread-search").show();
       this.amosval=str.removeAccents().replace(" de "," ");
+      debugger;
       if(this.promotion.codpromo === 0){
         this.navigate(this.page+"/"+this.mode+"/"+str.removeAccents().replace(" de "," "),!1);
 

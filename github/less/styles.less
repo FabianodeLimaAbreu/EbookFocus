@@ -557,6 +557,9 @@ header{
 	}
 }
 .controllers-container{
+	.btngroups_container{
+		display: none;
+	}
 	.buttons{
 		min-width: 90px;
 		&.submit{
@@ -569,8 +572,7 @@ header{
 		}
 		&.goback{
 			float: left;
-		}
-		//ok
+		}	
 		&.groups{
 			float: right;
 			margin-left: 10px;
@@ -2303,36 +2305,6 @@ div.modalie{
 }
 
 /********************************
-*************************************         INTERAÇÃO ENTRE PAGINAS       *****************/
-
-.images{
-	.viewport {
-		display: block;
-	}
-	.floatThead{
-		display: none;
-	}
-}
-
-.list{
-	.viewport {
-		display: none;
-	}
-	.floatThead{
-		display: block;
-	}
-}
-#detail-page{
-	.not-detail-bar{
-		display: none;
-	}
-	.page-container{
-		top: 70px;
-		height: auto;
-		overflow-y: hidden;
-	}
-}
-/********************************
 *************************************         Regua    *****************/
 .rule15{
 	width: 48px;
@@ -2393,11 +2365,11 @@ span.subtitle{
 	position: relative;
 	display: none;
 }
-/*#modal{
+#modal{
 	&.menu-modal{
 		display: none;
 	}
-}*/
+}
 .menu-container{
 	min-width: 300px;
 	width: 100%;
@@ -2427,6 +2399,60 @@ span.subtitle{
 			color:#5b8f9e;
 			width: 100%;
 			height: 100%;
+			display: block;
+		}
+	}
+}
+
+
+/********************************
+*************************************         INTERAÇÃO ENTRE PAGINAS       *****************/
+
+.images{
+	.viewport {
+		display: block;
+	}
+	.floatThead{
+		display: none;
+	}
+}
+
+.list{
+	.viewport {
+		display: none;
+	}
+	.floatThead{
+		display: block;
+	}
+}
+#detail-page{
+	.not-detail-bar{
+		display: none;
+	}
+	.page-container{
+		top: 70px;
+		height: auto;
+		overflow-y: hidden;
+	}
+}
+
+.exception_promo{
+	.controllers-container{
+		.btngroups_container{
+			display: block;
+		}
+	}
+	.filter-area-top{
+		.filter_list{
+			li{
+				&.f_grupo{
+					display: none;
+				}
+			}
+		}
+	}
+	#modal{
+		&.menu-modal{
 			display: block;
 		}
 	}

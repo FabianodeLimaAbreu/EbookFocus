@@ -554,6 +554,9 @@ header .container_logos span {
 .fullsize.toshow {
   margin-top: 0;
 }
+.controllers-container .btngroups_container {
+  display: none;
+}
 .controllers-container .buttons {
   min-width: 90px;
 }
@@ -2409,28 +2412,6 @@ div.modalie {
   color: white;
 }
 /********************************
-*************************************         INTERAÇÃO ENTRE PAGINAS       *****************/
-.images .viewport {
-  display: block;
-}
-.images .floatThead {
-  display: none;
-}
-.list .viewport {
-  display: none;
-}
-.list .floatThead {
-  display: block;
-}
-#detail-page .not-detail-bar {
-  display: none;
-}
-#detail-page .page-container {
-  top: 70px;
-  height: auto;
-  overflow-y: hidden;
-}
-/********************************
 *************************************         Regua    *****************/
 .rule15 {
   width: 48px;
@@ -2510,11 +2491,9 @@ span.subtitle {
   position: relative;
   display: none;
 }
-/*#modal{
-	&.menu-modal{
-		display: none;
-	}
-}*/
+#modal.menu-modal {
+  display: none;
+}
 .menu-container {
   min-width: 300px;
   width: 100%;
@@ -2544,6 +2523,37 @@ span.subtitle {
   color: #5b8f9e;
   width: 100%;
   height: 100%;
+  display: block;
+}
+/********************************
+*************************************         INTERAÇÃO ENTRE PAGINAS       *****************/
+.images .viewport {
+  display: block;
+}
+.images .floatThead {
+  display: none;
+}
+.list .viewport {
+  display: none;
+}
+.list .floatThead {
+  display: block;
+}
+#detail-page .not-detail-bar {
+  display: none;
+}
+#detail-page .page-container {
+  top: 70px;
+  height: auto;
+  overflow-y: hidden;
+}
+.exception_promo .controllers-container .btngroups_container {
+  display: block;
+}
+.exception_promo .filter-area-top .filter_list li.f_grupo {
+  display: none;
+}
+.exception_promo #modal.menu-modal {
   display: block;
 }
 .icon {
@@ -3059,6 +3069,20 @@ form textarea {
     width: 380px;
   }
 }
+@media (min-width: 450px) {
+  .controllers-container .form-container {
+    width: 330px;
+  }
+  .controllers-container .form-container .form-control.result-form {
+    min-width: 288px;
+  }
+  .exception_promo .controllers-container .form-container {
+    width: 330px;
+  }
+  .exception_promo .controllers-container .form-container .form-control.result-form {
+    min-width: 288px;
+  }
+}
 @media (max-width: 410px) {
   .controllers-container .form-container {
     margin-top: 8px;
@@ -3154,9 +3178,15 @@ form textarea {
     height: 11cm;
   }
   .controllers-container .form-container {
-    width: 360px;
+    width: 480px;
   }
   .controllers-container .form-container .form-control.result-form {
+    min-width: 430px;
+  }
+  .exception_promo .controllers-container .form-container {
+    width: 360px;
+  }
+  .exception_promo .controllers-container .form-container .form-control.result-form {
     min-width: 318px;
   }
   .bread-box .bread-search {
@@ -3241,12 +3271,12 @@ form textarea {
   }
   .controllers-container .form-container {
     display: inline-block;
-    width: 338px;
+    width: 420px;
     float: left;
     margin-left: 5px;
   }
   .controllers-container .form-container .form-control.result-form {
-    min-width: 296px;
+    min-width: 370px;
   }
   .controllers-container .select-view {
     margin-top: 0;
@@ -3268,6 +3298,12 @@ form textarea {
   }
   .controllers-container .group-item {
     width: auto;
+  }
+  .exception_promo .controllers-container .form-container {
+    width: 338px;
+  }
+  .exception_promo .controllers-container .form-container .form-control.result-form {
+    min-width: 296px;
   }
   .bread-box {
     max-height: 30px;
@@ -3297,8 +3333,18 @@ form textarea {
 @media (min-width: 820px) {
   .controllers-container .form-container {
     display: inline-block;
+    width: 470px;
     float: left;
     margin-left: 5px;
+  }
+  .controllers-container .form-container .form-control.result-form {
+    min-width: 420px;
+  }
+  .exception_promo .controllers-container .form-container {
+    width: 338px;
+  }
+  .exception_promo .controllers-container .form-container .form-control.result-form {
+    min-width: 296px;
   }
 }
 @media (min-width: 931px) {
@@ -3364,6 +3410,18 @@ form textarea {
   }
   .tut-list {
     width: 160px;
+  }
+  .controllers-container .form-container {
+    width: 595px;
+  }
+  .controllers-container .form-container .form-control.result-form {
+    min-width: 545px;
+  }
+  .exception_promo .controllers-container .form-container {
+    width: 338px;
+  }
+  .exception_promo .controllers-container .form-container .form-control.result-form {
+    min-width: 296px;
   }
   .filter-container {
     position: relative;
