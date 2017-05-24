@@ -568,6 +568,10 @@ header .container_logos span {
 .controllers-container .buttons.goback {
   float: left;
 }
+.controllers-container .buttons.groups {
+  float: right;
+  margin-left: 10px;
+}
 .controllers-container .buttons.images {
   float: left;
   margin: 0 5px 0 10px;
@@ -2479,6 +2483,69 @@ div.modalie {
 #detail.large .info-back.blackweek:before {
   left: 420px;
 }
+.promotional-banner {
+  width: 100%;
+  max-width: 757px;
+  max-height: 150px;
+  position: relative;
+  float: left;
+  left: 0
+
+	;
+  margin: 10px 0 10px 0px;
+}
+.promotional-banner img {
+  width: 100%;
+  height: auto;
+}
+span.subtitle {
+  color: #5b8f9e;
+  font-weight: 600;
+  font-size: 11px;
+  border: 1px solid #5fa0ac;
+  padding: 0 10px;
+  width: auto;
+  line-height: 28px;
+  float: left;
+  position: relative;
+  display: none;
+}
+/*#modal{
+	&.menu-modal{
+		display: none;
+	}
+}*/
+.menu-container {
+  min-width: 300px;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  background: white;
+  border: 1px solid #d5e7ed;
+  color: #5b8f9e;
+  display: none;
+}
+.menu-container h3 {
+  font-size: 14px;
+  line-height: 70px;
+  font-weight: 600;
+}
+.menu-container li {
+  position: relative;
+  float: left;
+  width: 100%;
+  line-height: 38px;
+  border-top: 1px solid #d5e7ed;
+}
+.menu-container li:hover {
+  background: #f0fafd;
+}
+.menu-container li a {
+  color: #5b8f9e;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .icon {
   padding: 0px;
   position: relative;
@@ -2992,12 +3059,9 @@ form textarea {
     width: 380px;
   }
 }
-@media (min-width: 450px) {
+@media (max-width: 410px) {
   .controllers-container .form-container {
-    width: 330px;
-  }
-  .controllers-container .form-container .form-control.result-form {
-    min-width: 285px;
+    margin-top: 8px;
   }
 }
 @media (max-width: 480px) {
@@ -3061,6 +3125,21 @@ form textarea {
   }
 }
 @media (min-width: 600px) {
+  .menu-container {
+    width: 600px;
+    margin: 0 0 0 -300px;
+    top: 100px;
+    left: 50%;
+    border-left: 0px;
+  }
+  .menu-container li {
+    width: 299px;
+    border-left: 1px solid #d5e7ed;
+  }
+  .menu-container h3 {
+    font-size: 16px;
+    border-left: 1px solid #d5e7ed;
+  }
   .detail {
     max-height: none;
   }
@@ -3075,10 +3154,10 @@ form textarea {
     height: 11cm;
   }
   .controllers-container .form-container {
-    width: 480px;
+    width: 360px;
   }
   .controllers-container .form-container .form-control.result-form {
-    min-width: 430px;
+    min-width: 318px;
   }
   .bread-box .bread-search {
     width: 70%;
@@ -3157,14 +3236,17 @@ form textarea {
   #detail-page .page-container {
     top: 70px;
   }
+  .controllers-container .buttons.groups {
+    float: left;
+  }
   .controllers-container .form-container {
     display: inline-block;
-    width: 420px;
+    width: 338px;
     float: left;
     margin-left: 5px;
   }
   .controllers-container .form-container .form-control.result-form {
-    min-width: 370px;
+    min-width: 296px;
   }
   .controllers-container .select-view {
     margin-top: 0;
@@ -3207,16 +3289,22 @@ form textarea {
     width: 95%;
     max-width: 560px;
   }
+  .promotional-banner {
+    left: 50%;
+    margin: 10px 0 10px -380px;
+  }
 }
 @media (min-width: 820px) {
   .controllers-container .form-container {
     display: inline-block;
-    width: 470px;
     float: left;
     margin-left: 5px;
   }
-  .controllers-container .form-container .form-control.result-form {
-    min-width: 420px;
+}
+@media (min-width: 931px) {
+  span.subtitle {
+    display: block;
+    min-width: 170px;
   }
 }
 @media (min-width: 945px) {
@@ -3276,12 +3364,6 @@ form textarea {
   }
   .tut-list {
     width: 160px;
-  }
-  .controllers-container .form-container {
-    width: 595px;
-  }
-  .controllers-container .form-container .form-control.result-form {
-    min-width: 545px;
   }
   .filter-container {
     position: relative;

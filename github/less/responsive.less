@@ -68,19 +68,28 @@
 }
 
 @media (min-width:450px){
+	
 	.controllers-container{
 		.form-container{
-			width: 330px;
+			// width: 330px;
 			.form-control{
 				&.result-form{
-					min-width: 285px;
+					// min-width: 288px;
 				}
 			}
 		}
 	}
 }
+@media (max-width:410px){
 
+.controllers-container{
+		.form-container{
+				margin-top:8px;
+		}
+	}
+}
 @media (max-width:480px){
+
 	.content{
 		.viewport{
 			.col-sm-1{
@@ -149,6 +158,7 @@
 }
 
 @media (min-width:550px){
+	
 	.form-control{
 		&.biggest{
 			width: 95%;
@@ -169,6 +179,21 @@
 	}
 }
 @media (min-width:600px){
+	.menu-container{
+	width: 600px;
+	margin: 0 0 0 -300px;
+	top: 100px;
+	left: 50%;	
+	border-left:0px;
+		li{
+			width: 299px;
+			border-left:1px solid #d5e7ed;
+		}
+		h3{
+			font-size: 16px;
+			border-left:1px solid #d5e7ed;
+		}
+	}
 	.detail{
 		max-height: none;
 		.info-back{
@@ -184,10 +209,10 @@
 	}
 	.controllers-container{
 		.form-container{
-			width: 480px;
+			width: 360px;
 			.form-control{
 				&.result-form{
-					min-width: 430px;
+					min-width: 318px;
 				}
 			}
 		}
@@ -297,16 +322,29 @@
 			top: 70px;
 		}
 	}
-
 	.controllers-container{
+	.buttons{
+		&.groups{
+			float: left;
+			// &::after{
+			// 	content: "Acetinados";
+			// 	.red;
+			// 	position: absolute;
+			// 	margin:-1px 0px 0 10px;
+			// 	height: 28px;
+			// 	// display: block;
+			// 	// float: right;
+			// }
+		}
+	}
 		.form-container{
 			display: inline-block;
-			width: 420px;
+			width: 338px;
 			float: left;
 			margin-left: 5px;
 			.form-control{
 				&.result-form{
-					min-width: 370px;
+					min-width: 296px;
 				}
 			}
 		}
@@ -352,25 +390,34 @@
 			max-width: 560px;
 		}
 	}
+	.promotional-banner{
+		left: 50%;
+		margin: 10px 0 10px -380px;
+	}
 }
 
 @media(min-width:820px){
 	.controllers-container{
 		.form-container{
 			display: inline-block;
-			width: 470px;
+			// width: 470px;
 			float: left;
 			margin-left: 5px;
 			.form-control{
 				&.result-form{
-					min-width: 420px;
+					// min-width: 420px;
 				}
 			}
 		}
 	}
 
 }
-
+@media(min-width:931px){
+	span.subtitle{
+		display: block;
+		min-width: 170px;
+	}
+}
 @media(min-width:945px){
 	/************************************
 	******************************************* PAGE
@@ -453,10 +500,10 @@
 	}
 	.controllers-container{
 		.form-container{
-			width: 595px;
+			// width: 595px;
 			.form-control{
 				&.result-form{
-					min-width: 545px;
+					// min-width: 545px;
 				}
 			}
 		}
@@ -715,4 +762,5 @@
 	.page-container,#table .tab-content{
 		height: 670px;
 	}
+
 }

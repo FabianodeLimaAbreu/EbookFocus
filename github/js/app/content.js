@@ -326,7 +326,7 @@ window.Promotion=Spine.Controller.sub({
       
   }, 
   events:{
-      
+      "click .group-menu .group_menu_item":"selectGroup"
   },
   requestPromo:function(code){
     if(this.getloading()){
@@ -336,6 +336,61 @@ window.Promotion=Spine.Controller.sub({
     .fail(function(){console.log("erro")});
     /*$.post("http://was-dev/focus24/Services/Ebook.svc/getPromocao/0?callback=?", this.proxy(this.getPromo), "json")
     .fail(function(){console.log("erro")});*/
+  },
+  expPromoRequestMenu:function(evt){
+    if ("object" === typeof evt) {
+      evt.preventDefault();
+    }
+    //http://ii3/services/Services/SearchMaterial.svc/OutletGroup/
+    if (this.getloading()) {
+        return !1;
+    }
+    this.setloading(!0);
+    $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/OutletGroup/&query=?callback=?", this.proxy(this.expPromoCreateGroupMenu)).fail(function() {
+        console.log("second success");
+    }).fail(function() {
+        console.log("error");
+    }).always(function() {
+        console.log("complete");
+    });
+    
+  },
+  expPromoCreateGroupMenu:function(a,b){
+    var html="";
+    for(var i=0;i<a.length;i++){
+        console.log(a[i]);
+        html+="<li><a href='#"+a[i].capitalize()+"' name='"+a[i].capitalize()  +"' class='group_menu_item'>"+a[i].capitalize()+"</button></li>";
+    }
+    this.group_menu.html(html);
+    this.group_modal.fadeIn().find(".menu-container").fadeIn();
+  },
+  selectGroup:function(evt){
+    evt.preventDefault();
+    this.reset();
+    this.group=$(evt.target).attr("name");
+    this.group_selected.text(this.group);
+    //this.searchEl.removeClass("big");
+    this.setloading(!1);
+    this.startListOutlet(this.group);
+    this.group_modal.fadeOut();
+    //this.g_opened=!1;
+    this.breadEl.find(".bread-search").hide();
+  },
+  startListOutlet:function(val){
+    if (this.getloading()) {
+        return !1;
+    }
+    this.breadarr = [];
+    this.setloading(!0,!1);
+    console.log(nodePath + "index.js?service=SearchMaterial.svc/searchOutlet/&query="+val.removeAccents().initialCaps().replace(" de "," ") + "/" + "0" + "/" + "0" +"?callback=?");
+    $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/searchOutlet/&query="+val.removeAccents().initialCaps().replace(" de "," ")+ "/" + "0" + "/" + "0" +"?callback=?", this.proxy(this.setdata)).fail(function() {
+        console.log("second success");
+    }).fail(function() {
+        console.log("error");
+    }).always(function() {
+        console.log("complete");
+    });
+    return !1;
   },
   getPromo:function(data){
     this.setloading(!0,!1);

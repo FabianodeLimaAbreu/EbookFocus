@@ -570,6 +570,11 @@ header{
 		&.goback{
 			float: left;
 		}
+		//ok
+		&.groups{
+			float: right;
+			margin-left: 10px;
+		}
 		&.images{
 			float: left;
 			margin: 0 5px 0 10px;
@@ -2358,5 +2363,73 @@ div.modalie{
 .box.blackweek a.detail:before{position:absolute;display:block;width:80px;height:42px;content:"";background:url('./images/blackweek.png');margin:1px 0 5px 35px}
 #detail .info-back.blackweek:before{position:absolute;display:block;top:0;left:240px;width:317px;height:92px;content:"";background:url('./images/blackweek-detail.png')}
 #detail.large .info-back.blackweek:before{left:420px}
+
+// promotional banner
+
+.promotional-banner{
+	width: 100%;
+	max-width: 757px;
+	max-height: 150px;
+	position: relative;
+	float: left;
+	left:0
+
+	;
+	margin: 10px 0 10px 0px;
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+span.subtitle{
+	color:#5b8f9e;
+	font-weight: 600;
+	font-size: 11px;
+	border: 1px solid #5fa0ac;
+	padding: 0 10px;
+	width: auto;
+	line-height: 28px;
+	float: left;
+	position: relative;
+	display: none;
+}
+/*#modal{
+	&.menu-modal{
+		display: none;
+	}
+}*/
+.menu-container{
+	min-width: 300px;
+	width: 100%;
+	height:auto;
+	position:absolute;
+	// margin: 0 0 0 -150px;
+	// left: 50%;
+	background: white;
+	border:1px solid #d5e7ed;
+	color:#5b8f9e;
+	display: none;
+	h3{
+		font-size: 14px;
+		line-height: 70px;
+		font-weight: 600;
+	}
+	li{
+		position: relative;
+		float: left;
+		width: 100%;
+		line-height: 38px;
+		border-top:1px solid #d5e7ed;
+		&:hover{
+			background: #f0fafd;
+		}
+		a{
+			color:#5b8f9e;
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+}
 
 @import url(import.less);

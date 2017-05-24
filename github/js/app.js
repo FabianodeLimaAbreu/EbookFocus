@@ -39,7 +39,11 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       "#alt-menu":"menuEl",
       "header":"header",
       ".backtotop":"backtotop",
-      "#videos":"videoEl"
+      "#videos":"videoEl",
+      ".menu-modal": "group_modal",
+      ".group-menu":"group_menu",
+      ".subtitle": "group_selected",
+      ".menu-container": "menu_container"
       /*".container":"container",
       ".nav-menu a":"menuopt",
       "header":"header",
@@ -61,7 +65,8 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       "click .borderby .b_order":"sortItems",
       "click .callfilter":"callFilter",
       "click .view_24 a":"resertItem",
-      "click .backtotop":"goTop"
+      "click .backtotop":"goTop",
+      "click .groups":"callExpPromoRequestMenu"
       /*"click .justit.bnote":"preventAction",
       "click .justit.bemail":"preventAction",
       "click .fornecedor_cadastro .nav-menu a":"preventAction",
@@ -73,6 +78,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       this.mode = "artigos";
       this.page="home";
       this.nsort="";
+      this.group="";
       this.breadarr = [];
       this.itens = $([]);
       this.data=[];
@@ -120,11 +126,17 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
         type:this.usr.TIPO
       });
       this.promotion = new Promotion({
+        el:this.group_modal,
         breadEl:this.breadEl,
         getloading:this.proxy(this.getloading),
         setdata:this.proxy(this.setdata),
         setloading:this.proxy(this.setloading),
-        breadarr:this.breadarr
+        breadarr:this.breadarr,
+        group_menu:this.group_menu,
+        group_modal:this.group_modal,
+        menu_container:this.menu_container,
+        group_selected:this.group_selected,
+        reset:this.proxy(this.reset)
       });
       this.filter = new Filter({
         el: this.filterEl,
@@ -207,7 +219,13 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
               this.tutpage = 1;
               this.amosval=a.code;
               this.promotion.codpromo = a.code;
-              this.promotion.requestPromo(a.code);
+              if(this.promotion.codpromo === "exception"){
+                this.promotion.expPromoRequestMenu();
+              }
+              else{
+                this.promotion.requestPromo(a.code);
+              }
+              
               break;
             case "redirect":
               //console.log("redirect");
@@ -235,6 +253,9 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       }));
     },
 
+    callExpPromoRequestMenu:function(evt){
+      this.promotion.expPromoRequestMenu(evt);
+    },
     /**
     * `Logout of app - Calling Logout Method from methods.js`
     * @memberOf App#
@@ -260,7 +281,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       );
     },
 
-    /**
+    /*
     * `Prevent Action from click when user click on note's and email's button in sample's page.`
     * `Prevent when user is on fornecedor_cadastro's page and click on a menu's item too, confirming if the user desire to change the page, if true, call this.redirect`
     * @memberOf App#
@@ -916,6 +937,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
     reset:function(){
       this.takedot = !1;
       this.amosval="";
+      this.group="";
       this.data = [];
       this.fdata = [];
 
