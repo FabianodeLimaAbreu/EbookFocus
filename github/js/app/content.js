@@ -167,6 +167,9 @@ window.Content = Spine.Controller.sub({
         if(data.hasOwnProperty("MATNR")){
           data["IMG_MATNR"]=data.MATNR.slice(0,15);
         }
+        if(!data["ATC"]){
+          data["ATC"]="Indefinido";
+        }
         atts = Object.keys(data);
     for (i = atts.length - 1; i >= 0; i--) {
         val = this.contentType(atts[i], data);
@@ -229,6 +232,10 @@ window.Content = Spine.Controller.sub({
           return Math.floor(data[att])+" "+uni;
           break;
         case "ATC":
+            if(isNaN(data["ATC"])){
+              return "Indefinido";
+            }
+
             var uni="";
             if(data['UNIDADE_MEDIDA'] === "MT"){    
               uni="m";
@@ -361,6 +368,7 @@ window.Promotion=Spine.Controller.sub({
         console.log(a[i]);
         html+="<li><a href='#"+a[i].capitalize()+"' name='"+a[i].capitalize()  +"' class='group_menu_item'>"+a[i].capitalize()+"</button></li>";
     }
+    $(".bclear").trigger("click");
     this.group_menu.html(html);
     this.group_modal.fadeIn().find(".menu-container").fadeIn();
   },
