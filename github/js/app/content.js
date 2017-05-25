@@ -352,17 +352,20 @@ window.Promotion=Spine.Controller.sub({
     if (this.getloading()) {
         return !1;
     }
-    /*if(parseInt($('.bread-page').text())){
-      return !0;
-    }*/
-    this.setloading(!0);
-    $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/OutletGroup/&query=?callback=?", this.proxy(this.expPromoCreateGroupMenu)).fail(function() {
-        console.log("second success");
-    }).fail(function() {
-        console.log("error");
-    }).always(function() {
-        console.log("complete");
-    });
+    if((parseInt($('.bread-page').text())) && ("object" !== typeof evt)){
+      console.log("OK - "+this.group+" , "+this.getAmosVal());
+      this.startListOutlet("Alfaiatarias");
+    }
+    else{
+      this.setloading(!0);
+      $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/OutletGroup/&query=?callback=?", this.proxy(this.expPromoCreateGroupMenu)).fail(function() {
+          console.log("second success");
+      }).fail(function() {
+          console.log("error");
+      }).always(function() {
+          console.log("complete");
+      });
+    }
     
   },
   expPromoCreateGroupMenu:function(a,b){
@@ -371,10 +374,12 @@ window.Promotion=Spine.Controller.sub({
         console.log(a[i]);
         html+="<li><a href='#"+a[i].capitalize()+"' name='"+a[i].capitalize()  +"' class='group_menu_item'>"+a[i].capitalize()+"</button></li>";
     }
-    $(".bclear").trigger("click");
+    //$(".bclear").trigger("click");
     /*if(parseInt($('.bread-page').text())){
-      return !0;
+      console.log("ok");
+      //return !0;
     }*/
+    this.setloading(!1);
     this.group_menu.html(html);
     this.group_modal.fadeIn().find(".menu-container").fadeIn();
   },
@@ -386,16 +391,20 @@ window.Promotion=Spine.Controller.sub({
     //this.searchEl.removeClass("big");
     this.setloading(!1);
     this.searchEl.find(".form-control").val("");
+    this.setBreadarr();
+    this.setBreadarr("FocusConnect - "+this.group);
+    console.dir(this.getBreadarr());
     this.startListOutlet(this.group);
     this.group_modal.fadeOut();
     //this.g_opened=!1;
-    this.breadEl.find(".bread-search").hide();
+    
+    //this.breadEl.find(".bread-search span").text(this.group);
   },
   startListOutlet:function(val){
     if (this.getloading()) {
         return !1;
     }
-    this.breadarr = [];
+    //this.breadarr = [];
     this.setloading(!0,!1);
     console.log(nodePath + "index.js?service=SearchMaterial.svc/searchOutlet/&query="+val.removeAccents().initialCaps().replace(" de "," ") + "/" + "0" + "/" + "0" +"?callback=?");
     $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/searchOutlet/&query="+val.removeAccents().initialCaps().replace(" de "," ")+ "/" + "0" + "/" + "0" +"?callback=?", this.proxy(this.setdata)).fail(function() {
@@ -427,5 +436,6 @@ window.Promotion=Spine.Controller.sub({
   },
   reset:function() {
     this.codpromo=0;
+    this.group="";
   }
 });

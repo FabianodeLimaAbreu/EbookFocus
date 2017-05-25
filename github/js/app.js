@@ -131,13 +131,16 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
         getloading:this.proxy(this.getloading),
         setdata:this.proxy(this.setdata),
         setloading:this.proxy(this.setloading),
+        setBreadarr:this.proxy(this.setBreadarr),
+        getBreadarr:this.proxy(this.getBreadarr),
         breadarr:this.breadarr,
         group_menu:this.group_menu,
         group_modal:this.group_modal,
         menu_container:this.menu_container,
         group_selected:this.group_selected,
         searchEl:this.searchEl,
-        reset:this.proxy(this.reset)
+        reset:this.proxy(this.reset),
+        getAmosVal:this.proxy(this.getAmosVal),
       });
       this.filter = new Filter({
         el: this.filterEl,
@@ -194,10 +197,10 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
           this.promotion.codpromo = a.promo;
           //this.writePage("amostras",a.code);
           ga('send', 'pageview',  'app.html#search/'+a.type+"/"+a.promo+"/"+a.code);
-
+          this.group_modal.hide();
           if(this.promotion.codpromo === "exception"){
             this.group_selected.text(" - ");
-            this.group_modal.fadeOut();
+            
             $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/searchOutlet/&query="+a.code.removeAccents().initialCaps().replace(" de "," ")+"/" + "0" + "/" + "0" +"?callback=?", this.proxy(this.setdata)).fail(function () {
               //console.log("error");
               return !1;
@@ -432,7 +435,12 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       } else {
         //Caso não tenha , na busca
         var str = a.removeAccents().capitalize();
-        this.breadarr.push(a);
+        if(this.promotion.codpromo === "exception"){
+          this.breadarr.push("FocusConnect - "+a);
+        }
+        else{
+          this.breadarr.push(a);
+        }
         this.takedot = !1;
       } 
 
@@ -461,6 +469,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       }
     },
     setdata:function(a,c,cancelfilter){  
+      console.log(this.breadarr);
       //Repassar neste metodo
       if(a.length && -1 !== a[0].MAKTX.indexOf("Timeout")){
           return this.modal.open("Tente novamente","O número de itens pesquisado excede a capacidade de processamento.<br>Sugerimos incluir mais parâmetros na sua pesquisa.",!0),this.setloading(!1,!0),this.content.reset(),!1;
@@ -475,7 +484,6 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       
       this.content.reset();
       this.page_container.scrollTop(0);
-
       if(this.fdata.length){
         this.content.changeview(this.view);
         c && this.filter.checklist(this.fdata);
@@ -647,6 +655,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       }
     },
     Componentfilter:function(data,page){
+      console.dir(this.cookiescroll[0]);
       var aux,context=this,status,i;
       this.fdata.length ? aux=this.fdata : aux=this.data;
       this.fdata=aux.filter(function(a,b){
@@ -840,7 +849,13 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       return this.mode;
     },
     setBreadarr:function(a){
-      this.breadarr=a || [];
+      this.breadarr=[];
+      if(a){
+        this.breadarr.push(a);
+      }
+    },
+    getBreadarr:function(){
+      return this.breadarr;
     },
     getCodPromo:function(){
       return this.promotion.codpromo;
@@ -948,6 +963,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
             "nsort":[e.nsort,(e.order_box.find(".b_order.sel").attr("title") || "")],
             "filter":e.filter.list
           };
+          console.dir(scroll);
           $.cookie.json = !0;
           e.cookiescroll=[];
           e.cookiescroll.push(scroll);
@@ -968,11 +984,11 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
     reset:function(){
       this.takedot = !1;
       this.amosval="";
-      this.group="";
       this.data = [];
       this.fdata = [];
 
       var $table = $('#table');
+      this.promotion.group="";
 
       /*this.itens = $([]);
       this.select_items = [];
