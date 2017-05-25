@@ -2555,6 +2555,7 @@ span.subtitle {
 }
 .exception_promo #modal.menu-modal {
   display: block;
+  top: 105px;
 }
 .icon {
   padding: 0px;
