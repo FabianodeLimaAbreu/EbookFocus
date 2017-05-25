@@ -136,6 +136,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
         group_modal:this.group_modal,
         menu_container:this.menu_container,
         group_selected:this.group_selected,
+        searchEl:this.searchEl,
         reset:this.proxy(this.reset)
       });
       this.filter = new Filter({
@@ -193,10 +194,22 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
           this.promotion.codpromo = a.promo;
           //this.writePage("amostras",a.code);
           ga('send', 'pageview',  'app.html#search/'+a.type+"/"+a.promo+"/"+a.code);
-          $.getJSON(nodePath + "index.js?service=" + "SearchMaterial.svc/ebookPromo/" + a.promo + "&query=" + a.code.removeAccents().initialCaps().replace(" de "," ") + "?callback=?", this.proxy(this.setdata)).fail(function () {
-            //console.log("error");
-            return !1;
-          });
+
+          if(this.promotion.codpromo === "exception"){
+            this.group_selected.text(" - ");
+            this.group_modal.fadeOut();
+            $.getJSON(nodePath + "index.js?service=SearchMaterial.svc/searchOutlet/&query="+a.code.removeAccents().initialCaps().replace(" de "," ")+"/" + "0" + "/" + "0" +"?callback=?", this.proxy(this.setdata)).fail(function () {
+              //console.log("error");
+              return !1;
+            });
+          }
+          else{
+            $.getJSON(nodePath + "index.js?service=" + "SearchMaterial.svc/ebookPromo/" + a.promo + "&query=" + a.code.removeAccents().initialCaps().replace(" de "," ") + "?callback=?", this.proxy(this.setdata)).fail(function () {
+              //console.log("error");
+              return !1;
+            });
+          }
+          
           /*$.getJSON("http://was-dev/focus24/Services/SearchMaterial.svc/ebookPromo/" + a.promo + "/" + a.code.removeAccents().initialCaps().replace(" de "," ") + "?callback=?", this.proxy(this.setdata)).fail(function () {
             //console.log("error");
             return !1;
@@ -215,7 +228,6 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
               this.promotion.codpromo = 0;
               break;
             case "express":
-            debugger;
               this.mode = "express";
               //console.log("express");
               this.tutpage = 1;
@@ -227,6 +239,8 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
               else{
                 this.promotion.requestPromo(a.code);
               }
+
+              //this.promotion.expPromoRequestMenu();
               
               break;
             case "redirect":
@@ -242,6 +256,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
         "detail/*code" : function(a) {
           this.page="detail";
           this.backtotop.fadeOut();
+          this.group_modal.hide();
           this.writePage("detail");
           this.tutpage = 2;
           ga('send', 'pageview',  'app.html#detail/'+a.code);
@@ -368,10 +383,14 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
         return !1;
       }
 
+      var class_promo="";
+      if(this.promotion.codpromo === "exception"){
+          class_promo="exception_promo";
+      }
       /*this.cookiescroll=[];
       $.removeCookie('posscroll', { path: '/' });*/
 
-      a.hasClass("sel") || (this.viewEl.find("button").removeClass("sel").addClass("unsel"), a.addClass("sel").removeClass("unsel"), this.view = a.attr("name"),$("body").attr("class","").addClass(this.view),this.setdata(this.fdata),      $(".page-container").scrollTop(0));
+      a.hasClass("sel") || (this.viewEl.find("button").removeClass("sel").addClass("unsel"), a.addClass("sel").removeClass("unsel"), this.view = a.attr("name"),$("body").attr("class","").addClass(this.view+" "+class_promo),this.setdata(this.fdata),      $(".page-container").scrollTop(0));
     },
     logout: function (a) {
       a && a.preventDefault();
@@ -390,7 +409,10 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       this.searchEl.find(".form-control").val(a).focus();
       this.reset();
 
-      var c, context=this,d = "Branco Poliester Cotton Focus Algodao Azuis Alf Malhas Malha Acetinados Acetinado Elastano Poliamida Print Printed Verdes White Vermelho".split(" "); //Rendas Renda 
+      var c, context=this,d="Nome Nome".split(" ");
+      if(this.promotion.codpromo !== "exception"){
+        d = "Branco Poliester Cotton Focus Algodao Azuis Alf Malhas Malha Acetinados Acetinado Elastano Poliamida Print Printed Verdes White Vermelho".split(" "); //Rendas Renda 
+      }
       if (this.loading || !a) {
         return !1;
       }
