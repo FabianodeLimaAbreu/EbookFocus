@@ -1713,7 +1713,8 @@ header .container_logos span {
 /*********************************
 ************************************	DEFAULT MODAL ***************************/
 #modal,
-#videos {
+#videos,
+.menu-modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -1725,7 +1726,8 @@ header .container_logos span {
   text-align: center;
 }
 #modal .modal-content,
-#videos .modal-content {
+#videos .modal-content,
+.menu-modal .modal-content {
   position: relative;
   margin: 0 auto;
   z-index: 999;
@@ -1739,18 +1741,21 @@ header .container_logos span {
   padding: 40px;
 }
 #modal .modal-buttons,
-#videos .modal-buttons {
+#videos .modal-buttons,
+.menu-modal .modal-buttons {
   width: 360px;
   position: relative;
   float: left;
   display: none;
 }
 #modal .confirm,
-#videos .confirm {
+#videos .confirm,
+.menu-modal .confirm {
   margin-left: 90px;
 }
 #modal .bclose,
-#videos .bclose {
+#videos .bclose,
+.menu-modal .bclose {
   position: absolute;
   right: 0;
   top: 0;
@@ -1769,7 +1774,8 @@ header .container_logos span {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ba7b5', endColorstr='#7bc0cd', GradientType=0);
 }
 #modal .bclose:after,
-#videos .bclose:after {
+#videos .bclose:after,
+.menu-modal .bclose:after {
   content: "";
   position: absolute;
   display: block;
@@ -1781,18 +1787,21 @@ header .container_logos span {
   left: 5px;
 }
 #modal .bclose:hover,
-#videos .bclose:hover {
+#videos .bclose:hover,
+.menu-modal .bclose:hover {
   background: #5d8f9d;
   color: #fff;
 }
 #modal .big-icon,
-#videos .big-icon {
+#videos .big-icon,
+.menu-modal .big-icon {
   float: left;
   width: 100%;
   height: 70px;
 }
 #modal .big-icon:after,
-#videos .big-icon:after {
+#videos .big-icon:after,
+.menu-modal .big-icon:after {
   content: "";
   display: block;
   position: absolute;
@@ -1805,25 +1814,32 @@ header .container_logos span {
   background-position: -10px -227px;
 }
 #modal .modal-text,
-#videos .modal-text {
+#videos .modal-text,
+.menu-modal .modal-text {
   float: left;
   margin-left: 10px;
   width: 100px;
 }
 #modal h1,
 #videos h1,
+.menu-modal h1,
 #modal .tut-view,
 #videos .tut-view,
+.menu-modal .tut-view,
 #modal .contact-view,
 #videos .contact-view,
+.menu-modal .contact-view,
 #modal .view-content,
 #videos .view-content,
+.menu-modal .view-content,
 #modal .tut-list,
-#videos .tut-list {
+#videos .tut-list,
+.menu-modal .tut-list {
   display: none;
 }
 #modal h2,
-#videos h2 {
+#videos h2,
+.menu-modal h2 {
   width: 340px;
   font-size: 12pt;
   font-weight: 400;
@@ -1831,7 +1847,8 @@ header .container_logos span {
   color: #7ec0cc;
 }
 #modal p,
-#videos p {
+#videos p,
+.menu-modal p {
   width: 340px;
   float: left;
   position: relative;
@@ -1840,15 +1857,18 @@ header .container_logos span {
   line-height: 12pt;
 }
 #modal .bad h2,
-#videos .bad h2 {
+#videos .bad h2,
+.menu-modal .bad h2 {
   color: #de7c8e;
 }
 #modal .bad .big-icon,
-#videos .bad .big-icon {
+#videos .bad .big-icon,
+.menu-modal .bad .big-icon {
   background-position: 10px -720px;
 }
 #modal .bad .big-icon:after,
-#videos .bad .big-icon:after {
+#videos .bad .big-icon:after,
+.menu-modal .bad .big-icon:after {
   content: "";
   display: block;
   position: absolute;
@@ -1860,7 +1880,8 @@ header .container_logos span {
   background-position: -10px -10px;
 }
 #modal .bad .bclose,
-#videos .bad .bclose {
+#videos .bad .bclose,
+.menu-modal .bad .bclose {
   background: #de7c8e;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(1, #de7c8e), color-stop(0, #c86f7f));
   background: -ms-linear-gradient(bottom, #de7c8e, #c86f7f);
@@ -1870,33 +1891,40 @@ header .container_logos span {
   border-color: #b26271;
 }
 #modal .bad .bclose:hover,
-#videos .bad .bclose:hover {
+#videos .bad .bclose:hover,
+.menu-modal .bad .bclose:hover {
   background: #b26271;
 }
 #modal .bad .button,
 #videos .bad .button,
+.menu-modal .bad .button,
 #modal .cancel,
-#videos .cancel {
+#videos .cancel,
+.menu-modal .cancel {
   background-color: #ad1410;
   border-color: #cf282e;
 }
 #modal.question .modal-buttons,
-#videos.question .modal-buttons {
+#videos.question .modal-buttons,
+.menu-modal.question .modal-buttons {
   display: block;
 }
 #modal.question .modal-text,
-#videos.question .modal-text {
+#videos.question .modal-text,
+.menu-modal.question .modal-text {
   float: left;
   margin-left: 10px;
   width: 360px;
   height: 80px;
 }
 #modal.question .big-icon,
-#videos.question .big-icon {
+#videos.question .big-icon,
+.menu-modal.question .big-icon {
   display: none;
 }
 #modal.tutorial .modal-content,
-#videos.tutorial .modal-content {
+#videos.tutorial .modal-content,
+.menu-modal.tutorial .modal-content {
   background-color: #fafafa;
   border: 1px solid #c3c3c3;
   width: 750px;
@@ -1907,12 +1935,15 @@ header .container_logos span {
 }
 #modal.tutorial .modal-text,
 #videos.tutorial .modal-text,
+.menu-modal.tutorial .modal-text,
 #modal.tutorial .big-icon,
-#videos.tutorial .big-icon {
+#videos.tutorial .big-icon,
+.menu-modal.tutorial .big-icon {
   display: none;
 }
 #modal.tutorial .tut-title,
-#videos.tutorial .tut-title {
+#videos.tutorial .tut-title,
+.menu-modal.tutorial .tut-title {
   display: block;
   font-weight: bold;
   margin: 0 0 25px;
@@ -1920,30 +1951,36 @@ header .container_logos span {
   font-size: 14pt;
 }
 #modal.tutorial h2,
-#videos.tutorial h2 {
+#videos.tutorial h2,
+.menu-modal.tutorial h2 {
   float: left;
   font-weight: normal;
   width: 200px;
 }
 #modal.tutorial p,
-#videos.tutorial p {
+#videos.tutorial p,
+.menu-modal.tutorial p {
   float: left;
   width: 260px;
   font-size: 9pt;
 }
 #modal.tutorial b,
-#videos.tutorial b {
+#videos.tutorial b,
+.menu-modal.tutorial b {
   color: #217fa5;
   font-weight: 400;
 }
 #modal.tutorial .tut-list,
 #videos.tutorial .tut-list,
+.menu-modal.tutorial .tut-list,
 #modal.tutorial .pag-list,
-#videos.tutorial .pag-list {
+#videos.tutorial .pag-list,
+.menu-modal.tutorial .pag-list {
   display: block;
 }
 #modal.tutorial .view-content,
-#videos.tutorial .view-content {
+#videos.tutorial .view-content,
+.menu-modal.tutorial .view-content {
   position: relative;
   float: left;
   width: 588px;
@@ -1954,11 +1991,13 @@ header .container_logos span {
   display: block;
 }
 #modal.tutorial h1,
-#videos.tutorial h1 {
+#videos.tutorial h1,
+.menu-modal.tutorial h1 {
   text-align: center;
 }
 #modal.tutorial .tut-view,
-#videos.tutorial .tut-view {
+#videos.tutorial .tut-view,
+.menu-modal.tutorial .tut-view {
   display: block;
   position: relative;
   float: left;
@@ -1967,20 +2006,23 @@ header .container_logos span {
   overflow: hidden;
 }
 #modal.tutorial .tut-content,
-#videos.tutorial .tut-content {
+#videos.tutorial .tut-content,
+.menu-modal.tutorial .tut-content {
   position: relative;
   height: 320px;
   width: 800px;
 }
 #modal.tutorial .tut-box,
-#videos.tutorial .tut-box {
+#videos.tutorial .tut-box,
+.menu-modal.tutorial .tut-box {
   float: left;
   width: 260px;
   height: 340px;
   margin: 10px 20px 0 25px;
 }
 #modal.tutorial .tut-img,
-#videos.tutorial .tut-img {
+#videos.tutorial .tut-img,
+.menu-modal.tutorial .tut-img {
   float: left;
   width: 180px;
   margin: 0 25px 20px;
@@ -1988,7 +2030,8 @@ header .container_logos span {
   background: url(../images/tutorial.png);
 }
 #modal.tutorial .tut-number,
-#videos.tutorial .tut-number {
+#videos.tutorial .tut-number,
+.menu-modal.tutorial .tut-number {
   float: left;
   width: 20px;
   height: 20px;
@@ -2001,7 +2044,8 @@ header .container_logos span {
   border-radius: 4px;
 }
 #modal.tutorial .tut-list,
-#videos.tutorial .tut-list {
+#videos.tutorial .tut-list,
+.menu-modal.tutorial .tut-list {
   display: block;
 }
 .tut-list {
@@ -2491,7 +2535,7 @@ span.subtitle {
   position: relative;
   display: none;
 }
-#modal.menu-modal {
+.menu-modal {
   display: none;
 }
 .menu-container {
@@ -2553,7 +2597,7 @@ span.subtitle {
 .exception_promo .filter-area-top .filter_list li.f_grupo {
   display: none;
 }
-.exception_promo #modal.menu-modal {
+.exception_promo .menu-modal {
   display: block;
   top: 105px;
 }

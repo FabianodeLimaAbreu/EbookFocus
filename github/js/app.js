@@ -421,6 +421,8 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       }
 
       this.breadarr = [];
+      this.breadEl.find(".bread-search span").text("");
+      console.dir(this.breadarr);
 
       //The case below is for some compost products like Veludo 4.5 that I have to know that the search has a point, then request all Veludo products and filter all itens that matches with the search with point or not
       if (-1 !== a.removeAccents().capitalize().indexOf(",") || -1 !== a.removeAccents().capitalize().indexOf(".")) {
@@ -469,7 +471,6 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       }
     },
     setdata:function(a,c,cancelfilter){  
-      console.log(this.breadarr);
       //Repassar neste metodo
       if(a.length && -1 !== a[0].MAKTX.indexOf("Timeout")){
           return this.modal.open("Tente novamente","O número de itens pesquisado excede a capacidade de processamento.<br>Sugerimos incluir mais parâmetros na sua pesquisa.",!0),this.setloading(!1,!0),this.content.reset(),!1;

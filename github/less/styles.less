@@ -1719,7 +1719,7 @@ header{
 
 /*********************************
 ************************************	DEFAULT MODAL ***************************/
-#modal,#videos{
+#modal,#videos,.menu-modal{
 	position: fixed; 
 	left: 0; 
 	top:0; 
@@ -2365,10 +2365,8 @@ span.subtitle{
 	position: relative;
 	display: none;
 }
-#modal{
-	&.menu-modal{
-		display: none;
-	}
+.menu-modal{
+	display: none;
 }
 .menu-container{
 	min-width: 300px;
@@ -2451,11 +2449,9 @@ span.subtitle{
 			}
 		}
 	}
-	#modal{
-		&.menu-modal{
-			display: block;
-			top: 105px;
-		}
+	.menu-modal{
+		display: block;
+		top: 105px;
 	}
 }
 
