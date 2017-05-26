@@ -206,6 +206,10 @@ window.Filter = Spine.Controller.sub({
     this.setloading(!1,!1),$(".toshow").show();
     $(".filter-container.small-filter").fadeOut();
   },
+  reset:function(){
+    this.list = [];
+    this.resetOptFilter();
+  },
   init : function(){
     this.list = [];
     this.data = null;

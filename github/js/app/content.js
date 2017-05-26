@@ -167,7 +167,7 @@ window.Content = Spine.Controller.sub({
         if(data.hasOwnProperty("MATNR")){
           data["IMG_MATNR"]=data.MATNR.slice(0,15);
         }
-        if(!data["ATC"]){
+        if(isNaN(data["ATC"])){
           data["ATC"]="Indefinido";
         }
         atts = Object.keys(data);

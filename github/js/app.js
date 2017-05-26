@@ -410,6 +410,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       a = arrayObject($(a.target).serializeArray());
       a = a.search;
       this.searchEl.find(".form-control").val(a).focus();
+      this.filter.reset();
       this.reset();
 
       var c, context=this,d="Nome Nome".split(" ");
