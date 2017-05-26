@@ -236,7 +236,7 @@ function PromotionHome(el){
 	    for(i=0;i<length;i++){
 	      if(this.promos[i].active){
 
-	      	if(this.promos[i].COD === "20130345"){
+	      	if(this.promos[i].COD === "500000"){
 	      		//First promo block code, set a var to be prepend after all
 	      		first=this.promos[i];
 	      	}
@@ -249,9 +249,15 @@ function PromotionHome(el){
 	    if(!counter){
 	    	html+="<li class='viewer-itens'></li>";
 	    }
-	    //Set html to first promo
-	    first_html="<li class='viewer-itens'><a class='item' href='app.html#search/express/"+first.COD+"' name='promo'>"+"<h1>"+first.DESCRICAO+"</h1>"+"<h2>"+first.DescPromocao+"</h2></a></li>";
-	    this.el.html(html).prepend(first_html);
+	    //Set html to first promo if it exists
+	    if(first){
+	    	first_html="<li class='viewer-itens'><a class='item' href='app.html#search/express/"+first.COD+"' name='promo'>"+"<h1>"+first.DESCRICAO+"</h1>"+"<h2>"+first.DescPromocao+"</h2></a></li>";
+	    	this.el.html(html).prepend(first_html);
+	    }
+	    else{
+	    	this.el.html(html);
+	    }
+	    
 	    this.elements.header.addClass('goDown');
 	};
 

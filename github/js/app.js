@@ -404,7 +404,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
     },
 
     submit:function(a){
-      /*var takedot=$.cookie("takedot");
+      /*var takedot=$.cookie("takedoft");
       console.log("chegou: "+takedot);*/
       a.preventDefault();
       a = arrayObject($(a.target).serializeArray());
@@ -423,7 +423,6 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
 
       this.breadarr = [];
       this.breadEl.find(".bread-search span").text("");
-      console.dir(this.breadarr);
 
       //The case below is for some compost products like Veludo 4.5 that I have to know that the search has a point, then request all Veludo products and filter all itens that matches with the search with point or not
       if (-1 !== a.removeAccents().capitalize().indexOf(",") || -1 !== a.removeAccents().capitalize().indexOf(".")) {
@@ -439,7 +438,7 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
         //Caso não tenha , na busca
         var str = a.removeAccents().capitalize();
         if(this.promotion.codpromo === "exception"){
-          this.breadarr.push("FocusConnect - "+a);
+          this.breadarr.push("ConnectOutlet - "+a);
         }
         else{
           this.breadarr.push(a);
@@ -657,7 +656,6 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
       }
     },
     Componentfilter:function(data,page){
-      console.dir(this.cookiescroll[0]);
       var aux,context=this,status,i;
       this.fdata.length ? aux=this.fdata : aux=this.data;
       this.fdata=aux.filter(function(a,b){
@@ -965,7 +963,6 @@ require(["methods","sp/min", "app/filter","app/content", "app/detail"], function
             "nsort":[e.nsort,(e.order_box.find(".b_order.sel").attr("title") || "")],
             "filter":e.filter.list
           };
-          console.dir(scroll);
           $.cookie.json = !0;
           e.cookiescroll=[];
           e.cookiescroll.push(scroll);
